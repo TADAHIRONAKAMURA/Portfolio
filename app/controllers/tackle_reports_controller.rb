@@ -1,0 +1,2 @@
+class TackleReportsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+module FishingReportsHelper
+end

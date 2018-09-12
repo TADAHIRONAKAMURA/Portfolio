@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 	# delete '/users/:id' => 'users#destroy'
 	get 'users/admin_index'
 	get 'users/user_show'
-	get 'users/complaint_show'
+	get 'users/contract_show'
 	get 'fishing_reports/admin_index'
 	# resources :fishing_spots
 	resources :fishing_spots, except: :show
