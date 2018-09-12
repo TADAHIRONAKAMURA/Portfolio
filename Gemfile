@@ -62,3 +62,20 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'pry-rails'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'enum_help'
+gem 'paranoia', '~> 2.3', '>= 2.3.1'
+
+
+
+
+
+
+
+
+
