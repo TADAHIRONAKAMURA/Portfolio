@@ -2,5 +2,7 @@ class Complaint < ApplicationRecord
 
 	belongs_to	:user
 	belongs_to	:fishing_report
+
+	validates :c_comment, length: { in: 1..100 }
 	
 end

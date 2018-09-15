@@ -1,0 +1,50 @@
+<h2> ユーザー一覧</h2>
+		<div  class="over_4">
+			<table class="table-hover table">
+				<thead class="users_index_thread">
+					<tr>
+						<th class="users_index_thread_th" width="50px"> ID </th>
+						<th colspan="2" class="users_index_thread_th" width="150px"> ユーザー名 </th>
+						<!-- <th class="users_index_thread_th" width="200px"> メールアドレス </th> -->
+						<!-- <th colspan="2" class="users_index_thread_th"> </th> -->
+						<!-- <th colspan="2" class="users_index_thread_th"> </th> -->
+					</tr>
+				</thead>
+				<tbody class="test">
+					<% @users.each do |user| %>
+					<tr>
+						<td class="users_index_tbody_td" width="50px"><%= user.id %></td>
+						<td colspan="2" class="users_index_tbody_td" width="150px"><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
+						<!-- <td class="users_index_tbody_td" width="200px"><%#= user.email %></td> -->
+						<!-- <td colspan="2"><%#= link_to "編集", edit_user_path(user.id), class: 'btn btn-success' %></td> -->
+						<!-- <td colspan="2"><%#= link_to "退会", user_path(user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に退会させますか？" %> </td> -->
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+
+<!--  -->
+<h1>Relationships</h1>
+
+<!-- <table> -->
+	<!-- <thead> -->
+		<!-- <tr> -->
+			<!-- <th>ユーザーID</th> -->
+			<!-- <th>ユーザーNAME</th> -->
+			<!-- <th></th> -->
+			<!-- <th>フォロー数</th> -->
+			<!-- <th>フォロワー数</th> -->
+		<!-- </tr> -->
+	<!-- </thead> -->
+	<!-- <tbody> -->
+		<%# @users.each do |user| %>
+			<%# if user.id == current_user.id %>
+				<%# next %>
+			<%# end %>
+			<!-- <tr class="<%#= user.id %>"> -->
+				<%#= render "user", user: user %>
+			<!-- </tr> -->
+		<%# end %>
+	<!-- </tbody> -->
+<!-- </table> -->

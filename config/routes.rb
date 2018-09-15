@@ -14,16 +14,20 @@ Rails.application.routes.draw do
 	resources :users, only: [:show, :edit, :update, :index, :destroy]
 	resources :fishing_reports do
 		resources :favorites, only: [:create, :destroy]
-		resources :report_coment, only: [:create, :destroy]
-		resources :complaint, only: [:create, :destroy]
+		resources :report_comments, only: [:create, :destroy]
+		resources :complaints, only: [:create, :destroy]
 	end
 	# delete '/users/:id' => 'users#destroy'
-	get 'users/admin_index'
-	get 'users/user_show'
-	get 'users/contract_show'
-	get 'fishing_reports/admin_index'
-	# resources :fishing_spots
-	resources :fishing_spots, except: :show
+	get '/mypage' => 'users#mypage'
+	get '/contract' => 'users#contract'
+	get '/user_index' => 'users#user_index'
+	# get '/report_index' => 'fishing_reports#report_index'
+	
+	# get 'fishing_reports/admin_index'
+	# get 'users/admin_index'
+
+	resources :fishing_spots
+	# resources :fishing_spots, except: :show
 	resources :tackle_reports, except: :show
 	# resources :relationships, only: [:show, :edit, :update, :index, :destroy]
 

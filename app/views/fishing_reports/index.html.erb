@@ -1,0 +1,41 @@
+<h1>釣果報告一覧</h1>
+<table  class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th>ポイント名</th>
+			<th>釣行日</th>
+			<th>釣れた時間</th>
+			<th>天気</th>
+			<th>MAXサイズ</th>
+			<th>ルアータイプ</th>
+			<th>レンジ</th>
+			<th>リトリーブ</th>
+			<th>ルアー名</th>
+			<th>釣果報告</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @f_reports.each do |f_report| %>
+		<tr>
+			<td><%#= attachment_image_tag artist, :artist_image, :fill, 50, 50, format: 'jpeg' %></td>
+			<td><%= link_to fishing_report_path(f_report.id) do %><%= f_report.fishing_spot.fishing_spot_name %><% end %></td>
+			<td><%= f_report.fishing_date %></td>
+			<td><%= f_report.time %></td>
+			<td><%= f_report.weather %></td>
+			<td><%= f_report.size %></td>
+			<td><%= f_report.lure_type.type_name %></td>
+			<td><%= f_report.range %></td>
+			<td><%= f_report.retrieve %></td>
+			<td><%= f_report.lure_name %></td>
+			<td><%= f_report.fishing_body %></td>
+			<td><%= link_to "編集", edit_fishing_report_path(f_report.id) %></td>
+			<td><%= link_to "削除", fishing_report_path(f_report.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+		<!-- <td><%#= link_to edit_artist_path(artist.id) do %><button class="btn btn-default btn-success">編集</button><%# end %></td> -->
+		<!-- <td><%#= link_to artist_path(artist.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn btn-default btn-danger">削除</button><%# end %></td> -->
+		</tr>
+	<% end %>
+</tbody>
+</table>

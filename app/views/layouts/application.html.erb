@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BASSCOCO</title>
+    <title>TestApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,81 @@
   </head>
 
   <body>
+    <div>
+      <nav class="nav">
+        <ul class="ruled">
+<% if user_signed_in? %>
+      <li class="li">
+      <%= link_to "top", fishing_spots_path %>
+      </li>
+      
+      <li class="li">
+      <%= link_to "釣果報告投稿ページ", new_fishing_report_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "釣果報告一覧ページ", fishing_reports_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "Tackle紹介ページ", tackle_reports_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "マイページ", mypage_path(current_user.id) %>
+      </li>
+
+      <li class="li">
+      <%= link_to "ユーザー一覧ページ", users_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+
+      <li class="li">
+      <%= link_to "ユーザー一覧(管理者用)", user_index_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "釣果報告一覧(管理者用)", fishing_reports_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "top登録ページ", new_fishing_spot_path %>
+      </li>
+
+<% else %>
+      <li class="li">
+      <%= link_to "top", fishing_spots_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "top登録ページ", new_fishing_spot_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "釣果報告投稿ページ", new_fishing_report_path %>
+      </li>
+
+      <li class="li">
+      <%= link_to "釣果報告一覧ページ", fishing_reports_path %>
+      </li>
+      
+      <li class="li">
+      <%= link_to "ユーザー一覧ページ", users_path %>
+      </li>           
+      <li class="li">
+      <%= link_to "Log in", new_user_session_path %>
+      </li>
+      <li class="li">
+      <%= link_to "Sign Up", new_user_registration_path %>
+      </li>
+<% end %>
+        </ul>
+      </nav>
+      
+    </div>
     <%= yield %>
   </body>
 </html>

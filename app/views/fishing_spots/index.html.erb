@@ -1,0 +1,21 @@
+<h1>topページ</h1>
+<div>
+<img class="map-image" src="assets/kawaguchi.jpg">
+</div>
+
+<table>
+<h4><% @spots.each do |spot| %>
+	<tr>
+		<td><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></td>
+	</tr>
+<% end %></h4>
+</table>
+<table>
+<h4><% @spots.each do |spot| %>
+	<tr>
+		<td><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" %></td>
+		<td><%= spot.fishing_spot_name %></td>
+		<td><%= spot.fishing_spot_body %></td>
+	</tr>
+<% end %></h4>
+</table>

@@ -1,0 +1,84 @@
+<div class="users_show_left">
+   <h4 class="users_names"><strong><%= @user.last_name %><%= @user.first_name %>さんのマイページ</strong></h4>
+   <div> <%= link_to "基本情報の編集", edit_user_path(@user.id), class: 'btn btn-success btn-user-show' %> </div>
+   <!-- <div> <%#= link_to "退会", user_path, class: 'btn btn-danger btn-user-show', method: :'delete', "data-confirm" => "本当に退会しますか？" %> </div> -->
+</div>
+<%= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "noimage2.png", format: "jpg", class: "user_image" %>
+<%#= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "noimage2.png", class: "noimage" %>
+<h4>ニックネーム</h4>
+<%= @user.nickname %>
+<h4>introduction</h4>
+<%= @user.introduction %>
+
+<h4>Relationships</h4>
+<!-- <table> -->
+	<!-- <thead> -->
+		<!-- <tr> -->
+			<!-- <th>ユーザーID</th> -->
+			<!-- <th>ユーザーNAME</th> -->
+			<!-- <th></th> -->
+			<!-- <th>フォロー数</th> -->
+			<!-- <th>フォロワー数</th> -->
+		<!-- </tr> -->
+	<!-- </thead> -->
+	<!-- <tbody> -->
+		<%# @users.each do |user| %>
+			<%# if user.id == current_user.id %>
+				<%# next %>
+			<%# end %>
+			<!-- <tr class="<%#= user.id %>"> -->
+				<%#= render "user", user: user %>
+			<!-- </tr> -->
+		<%# end %>
+	<!-- </tbody> -->
+<!-- </table> -->
+<h4>Relationships</h4>
+
+<%= link_to "釣果レポートを投稿", new_fishing_report_path %>
+<%= link_to "Tackles紹介を投稿", new_tackle_report_path %>
+
+<h1>釣果報告一覧</h1>
+<table  class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th>ポイント名</th>
+			<th>釣行日</th>
+			<th>釣れた時間</th>
+			<th>天気</th>
+			<th>MAXサイズ</th>
+			<th>ルアータイプ</th>
+			<th>レンジ</th>
+			<th>リトリーブ</th>
+			<th>ルアー名</th>
+			<th>釣果報告</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @user.fishing_reports.each do |report| %>
+		<tr>
+			<td><%#= attachment_image_tag artist, :artist_image, :fill, 50, 50, format: 'jpeg' %></td>
+			<td><%= report.fishing_spot.fishing_spot_name %></td>
+			<td><%= report.fishing_date %></td>
+			<td><%= report.time %></td>
+			<td><%= report.weather %></td>
+			<td><%= report.size %></td>
+			<td><%= report.lure_type.type_name %></td>
+			<td><%= report.range %></td>
+			<td><%= report.retrieve %></td>
+			<td><%= report.lure_name %></td>
+			<td><%= report.fishing_body %></td>
+<!-- ↓削除予定↓ -->
+			<td><%= link_to "編集", edit_fishing_report_path(report.id) %></td>
+			<td><%= link_to "削除", fishing_report_path(report.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+		<!-- <td><%#= link_to edit_artist_path(artist.id) do %><button class="btn btn-default btn-success">編集</button><%# end %></td> -->
+		<!-- <td><%#= link_to artist_path(artist.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn btn-default btn-danger">削除</button><%# end %></td> -->
+<!-- ↑削除予定↑ -->
+		</tr>
+	<% end %>
+</tbody>
+</table>
+
+

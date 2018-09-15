@@ -16,18 +16,19 @@ class User < ApplicationRecord
 	has_many :followed_users, through: :relationships, source: :followed
 	has_many :followers, through: :reverse_relationships, source: :follower
 
+  attachment :user_image
  
-  	def following?(other_user)
-   		followed_users.include?(other_user)
-  	end
+	def following?(other_user)
+ 		followed_users.include?(other_user)
+	end
 
-  	def follow!(other_user)
-    	relationships.create!(followed_id: other_user.id)
-  	end
- 
-  	def unfollow!(other_user)
-    	relationships.find_by(followed_id: other_user.id).destroy
-  	end
+	def follow!(other_user)
+  	relationships.create!(followed_id: other_user.id)
+	end
 
-  	end
+	def unfollow!(other_user)
+  	relationships.find_by(followed_id: other_user.id).destroy
+	end
+
+	end
   	

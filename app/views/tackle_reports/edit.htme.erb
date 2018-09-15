@@ -1,0 +1,26 @@
+<h4>Tackle紹介編集</h4>
+
+<%= form_for(@f_report) do |f| %>
+
+<%= f.label :"写真" %><br>
+<%= f.attachment_field :tackle_image, placeholder:"Tackle写真", class:"data" %><br>
+
+<%= f.label :"オススメ度" %><br>
+<%= f.select :evaluation, TackleReport.evaluations.keys.to_a, {}, class: "data" %><br>
+
+<%= f.label :"メーカー" %><br>
+<%= f.select :maker_id, Maker.all.collect { |p| [ p.maker_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
+
+<%= f.label :"ルアータイプ" %><br>
+<%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
+
+<%= f.label :"ルアー名" %><br>
+<%= f.text_field :lure_name, class:"data" %><br>
+
+<%= f.label :"紹介文" %><br>
+<%= f.text_area :tackle_body, class:"data" %><br>
+
+<p><%= f.submit '上記の内容で変更する', class:"btn btn-success active data" %></p>
+
+<% end %>
+
