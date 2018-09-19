@@ -70,6 +70,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'enum_help'
 gem 'paranoia', '~> 2.3', '>= 2.3.1'
+gem 'kaminari'
 
 
 

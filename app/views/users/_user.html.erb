@@ -1,0 +1,13 @@
+<!-- <td><%#= user.id %></td> -->
+<td><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
+<% if current_user.following?(user) %>
+	<td><%= link_to "フォロー中", follow_path(user.id), remote: true, class: "follow now", data: {"id" => user.id} %></td>
+<% else %>
+	<td><%= link_to "フォローする", follow_path(user.id), remote: true, class: "follow yet", data: {"id" => user.id} %></td>
+	<!-- カスタムデータ属性 -->
+<% end %>
+<td></td>
+<td></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %>人</td>
+
+

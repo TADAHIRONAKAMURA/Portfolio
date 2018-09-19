@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		# @user = current_user
+		@users = User.all
 		# @f_reports = FishingReport.all
 		# @spots = FishingSpot.all
 		# @lure_types = LureType.all
@@ -20,6 +22,21 @@ class UsersController < ApplicationController
 
 	def mypage
 		@user = User.find(current_user.id)
+		@users = User.all
+
+		# user = followed_users
+		# f_report = FishingReport.where(user_id: user).last
+		# unless FishingReport.where(user_id: user) == nil
+
+
+
+
+
+		# follow = @user.followed_users.id
+		# @fish = fishing_reports.user_id.all
+		# @f_report = FishingReport.where(@fish.id = @follow.id).limit(1).order('created_at desc')
+		# @artist = @user.artist
+		# @item = Item.where(artist_id: @artist.id).limit(1).order('created_at desc')
 	end
 
 	def contract

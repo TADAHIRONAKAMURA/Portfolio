@@ -3,6 +3,8 @@
     <h4>タイトル</h4>
 <h4>ポイントイメージ</h4>
 <%= f.attachment_field :fishing_spot_image, placeholder:"ポイントイメージ", class:"" %>
+<h4>No.</h4>
+<%= f.number_field :spot_number, min:0, class:"data" %>	
 <h4>釣りポイント</h4>
 <%= f.text_field :fishing_spot_name, placeholder:"釣りポイント名を入力", class:"" %>
 <h4>ポイント説明</h4>

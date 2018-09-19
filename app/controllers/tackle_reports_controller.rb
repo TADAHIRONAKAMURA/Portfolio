@@ -25,7 +25,7 @@ class TackleReportsController < ApplicationController
 
 	def update
 		@tackle = TackleReport.find(params[:id])
-		@tackle.update(fishing_report_params)
+		@tackle.update(tackle_report_params)
 		redirect_to tackle_reports_path
 	end
 

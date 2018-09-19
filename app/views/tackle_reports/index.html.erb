@@ -1,28 +1,35 @@
-<h1>Tackle紹介</h1>
-<table>
-	<caption>table title and/or explanatory text</caption>
-	<thead>
-		<tr>
-			<th>紹介者</th>
-			<th></th>
-			<th>オススメ度</th>
-			<th>メーカー</th>
-			<th>ルアータイプ</th>
-			<th>ルアー名</th>
-			<th>紹介文</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @tackles.each do |tackle| %>
-		<tr>
-			<th><%= tackle.user.nickname %></th>
-			<th><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %></th>
-			<th><%= tackle.evaluation %></th>
-			<th><%= tackle.maker.maker_name %></th>
-			<th><%= tackle.lure_type.type_name %></th>
-			<th><%= tackle.tackle_name %></th>
-			<th><span><%= tackle.tackle_body %></span></th>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="main-visual">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Tackle</h2>
+				<table  class="table">
+					<thead>
+						<tr>
+							<th class="col-md-1">オススメ度</th>
+							<th class="col-md-1">イメージ画像</th>
+							<th class="col-md-1">メーカー</th>
+							<th class="col-md-1">ルアータイプ</th>
+							<th class="col-md-1">ルアー名</th>
+							<th class="col-md-5">紹介文</th>
+							<th class="col-md-1">紹介者</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @tackles.each do |tackle| %>
+						<tr>
+							<th class="col-md-1"><%= tackle.evaluation %></th>
+							<th class="col-md-1"><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %></th>
+							<th class="col-md-1"><%= tackle.maker.maker_name %></th>
+							<th class="col-md-1"><%= tackle.lure_type.type_name %></th>
+							<th class="col-md-1"><%= tackle.tackle_name %></th>
+							<th class="col-md-5"><%= tackle.tackle_body %></th>
+							<th class="col-md-1"><%= link_to user_path(tackle.id) do %><%= tackle.user.nickname %><% end %></th>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

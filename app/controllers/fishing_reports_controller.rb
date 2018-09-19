@@ -1,6 +1,7 @@
 class FishingReportsController < ApplicationController
 	def index
 		@f_reports = FishingReport.all
+		@tackles = TackleReport.all
 		@spots = FishingSpot.all
 		@lure_types = LureType.all
 
@@ -20,7 +21,7 @@ class FishingReportsController < ApplicationController
 		@f_report.user_id = current_user.id
 		@f_report.save
 		# puts @f_report.errors.full_messages
-		redirect_to fishing_reports_path(@f_report.id)
+		redirect_to mypage_path
 		flash[:notice]="釣果報告が完了しました！"
 		
 

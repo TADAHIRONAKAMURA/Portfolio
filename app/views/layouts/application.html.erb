@@ -1,90 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TestApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+   <title>BASSCOCO</title>
+   <%= csrf_meta_tags %>
+   <%= csp_meta_tag %>
+   <meta charset="utf-8">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <div>
-      <nav class="nav">
-        <ul class="ruled">
-<% if user_signed_in? %>
-      <li class="li">
-      <%= link_to "top", fishing_spots_path %>
-      </li>
-      
-      <li class="li">
-      <%= link_to "釣果報告投稿ページ", new_fishing_report_path %>
-      </li>
+<body>
+<header class="site-header">
+<!-- /header -->
+   <nav class="header-box">
+   <ul id="dropmenu">
+      <% if user_signed_in? %>
+         <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
+         <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
+         <!-- <li><a href="#">FISHING</a> -->
+            <!-- <ul> -->
+               <!-- <%# @spots.each do |spot| %><li><%#= link_to fishing_spot_path(spot.id) do %><%#= spot.fishing_spot_name %><%# end %></li><%# end %> -->
+            <!-- </ul> -->
+         <!-- </li> -->
+         <li><a href="#"><%= current_user.nickname %></a>
+            <ul>
+               <li class="li"><%= link_to "MY PAGE", mypage_path %></li>
+               <li class="li"><%= link_to "USER", users_path %></li>
+               <li class="li"><%= link_to "POLICY", contract_path %></li>
+               <li class="li"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+            </ul>
+         </li>
+         <li><a href="#">ADMIN</a>
+            <ul>
+               <li class="li"><%= link_to "釣果報告投稿ページ", new_fishing_report_path %></li>
+               <li class="li"><%= link_to "top登録ページ", new_fishing_spot_path %></li>
+               <li class="li"><%= link_to "ユーザー一覧(管理者用)", user_index_path %></li>
+               <li class="li"><%= link_to "投稿一覧(管理者用)", fishing_reports_path %></li>
+            </ul>
+         </li>
+      <% elsif admin_signed_in? %>
+         <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
+         <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
+         <li><a href="#">FISHING</a>
+            <ul>
+               <%= render "fishing_spot/header", user: user %>
+            </ul>
+         </li>
+         <li class="li"><%= link_to "ユーザー一覧", users_path %></li>
+         <li><a href="#">ADMIN</a>
+            <ul>
+               <li class="li"><%= link_to "釣果報告投稿ページ", new_fishing_report_path %></li>
+               <li class="li"><%= link_to "top登録ページ", new_fishing_spot_path %></li>
+               <li class="li"><%= link_to "ユーザー一覧(管理者用)", user_index_path %></li>
+               <li class="li"><%= link_to "投稿一覧(管理者用)", fishing_reports_path %></li>
+               <li><a href="#">LOGOUT</a>
+            </ul>
+         </li>
+      <% else %>
+         <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
+         <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
+         <li class="li"><%= link_to "LOG IN", new_user_session_path %></li>
+         <li class="li"><%= link_to "SIGN UP", new_user_registration_path %></li>
+         <li class="li"><%= link_to "POLICY", contract_path %></li>
+      <% end %>
+   </ul>
 
-      <li class="li">
-      <%= link_to "釣果報告一覧ページ", fishing_reports_path %>
-      </li>
+   </nav>
+</header>
+<br>
+<br>
 
-      <li class="li">
-      <%= link_to "Tackle紹介ページ", tackle_reports_path %>
-      </li>
+<main>
+<%= yield %>
+</main>
 
-      <li class="li">
-      <%= link_to "マイページ", mypage_path(current_user.id) %>
-      </li>
+<footer>
+   <div>
+     <p class="footer-text">Copyright © Infratop Inc. All Rights Reserved.</p>
+   </div>
+</footer>
 
-      <li class="li">
-      <%= link_to "ユーザー一覧ページ", users_path %>
-      </li>
-
-      <li class="li">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-
-      <li class="li">
-      <%= link_to "ユーザー一覧(管理者用)", user_index_path %>
-      </li>
-
-      <li class="li">
-      <%= link_to "釣果報告一覧(管理者用)", fishing_reports_path %>
-      </li>
-
-      <li class="li">
-      <%= link_to "top登録ページ", new_fishing_spot_path %>
-      </li>
-
-<% else %>
-      <li class="li">
-      <%= link_to "top", fishing_spots_path %>
-      </li>
-
-      <li class="li">
-      <%= link_to "top登録ページ", new_fishing_spot_path %>
-      </li>
-
-      <li class="li">
-      <%= link_to "釣果報告投稿ページ", new_fishing_report_path %>
-      </li>
-
-      <li class="li">
-      <%= link_to "釣果報告一覧ページ", fishing_reports_path %>
-      </li>
-      
-      <li class="li">
-      <%= link_to "ユーザー一覧ページ", users_path %>
-      </li>           
-      <li class="li">
-      <%= link_to "Log in", new_user_session_path %>
-      </li>
-      <li class="li">
-      <%= link_to "Sign Up", new_user_registration_path %>
-      </li>
-<% end %>
-        </ul>
-      </nav>
-      
-    </div>
-    <%= yield %>
-  </body>
+</body>
 </html>

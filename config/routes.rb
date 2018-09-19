@@ -31,8 +31,8 @@ Rails.application.routes.draw do
 	resources :tackle_reports, except: :show
 	# resources :relationships, only: [:show, :edit, :update, :index, :destroy]
 
-
-	get '/tmp/:dareno/:dotti' => 'relationships#tmp', as: 'tmp'
+	# get 'users/:id' => 'relationships#show', as: 'user'
+	get '/tmp/:whose/:which' => 'relationships#tmp', as: 'tmp'
 	get '/follow/:id' => 'relationships#follow', as: 'follow'
 	get '/count' => 'relationships#count', as: 'count'
 end

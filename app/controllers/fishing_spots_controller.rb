@@ -1,6 +1,6 @@
 class FishingSpotsController < ApplicationController
 	def index
-		@spots = FishingSpot.all
+		@spots = FishingSpot.page(params[:page]).reverse_order
 	end
 
 	def new
@@ -39,7 +39,7 @@ class FishingSpotsController < ApplicationController
 
 	private
 	def fishing_spot_params
-		params.require(:fishing_spot).permit(:spot_number, :fishing_spot_name, :fishing_spot_image, :fishing_spot_body)
+		params.require(:fishing_spot).permit(:spot_number, :fishing_spot_name, :fishing_spot_image, :fishing_spot_body, :a_image)
 		
 	end
 end

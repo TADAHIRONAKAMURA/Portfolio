@@ -1,3 +1,43 @@
 // Place all the styles related to the fishing_spots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top_background {
+  width: 100%;
+  height: 1000px;
+  // margin: 0 auto;
+  background-image: url("fuzi.jpg");
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+// <img class="map-image" src="assets/kawaguchi.jpg">
+// body {background-image: url("photo1.jpg"); }
+
+.second-background {
+  width: 100%;
+  height: 1100px;
+  background-image: url("fuzi.jpg");
+  background-position: bottom center;
+  background-attachment: fixed;
+}
+
+.spot111 {
+	background-color: #000;
+	color: #fff;
+}
+
+.main-visual{
+  width: 100%;
+  // height: 300px
+  padding: 50px 50px
+  
+}
+
+.description{
+  padding: 50px 50px;
+}
+
+.point{
+  color: #fff
+}

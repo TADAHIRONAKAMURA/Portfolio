@@ -1,6 +1,6 @@
 <h4>Tackle紹介編集</h4>
 
-<%= form_for(@f_report) do |f| %>
+<%= form_for(@tackle) do |f| %>
 
 <%= f.label :"写真" %><br>
 <%= f.attachment_field :tackle_image, placeholder:"Tackle写真", class:"data" %><br>
@@ -15,7 +15,7 @@
 <%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
 
 <%= f.label :"ルアー名" %><br>
-<%= f.text_field :lure_name, class:"data" %><br>
+<%= f.text_field :tackle_name, class:"data" %><br>
 
 <%= f.label :"紹介文" %><br>
 <%= f.text_area :tackle_body, class:"data" %><br>
@@ -23,4 +23,5 @@
 <p><%= f.submit '上記の内容で変更する', class:"btn btn-success active data" %></p>
 
 <% end %>
+
 

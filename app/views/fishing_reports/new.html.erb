@@ -23,9 +23,9 @@
 <%= f.label :"天気" %><br>
 <%= f.select :weather, FishingReport.weathers.keys.to_a, {}, class: "data" %><br>
 
-   <%= f.label :"最大サイズ" %><br>
-<%= f.select :size, FishingReport.sizes.keys.to_a, {}, class: "data" %><br>
-<!-- <%#= f.number_field :size, class:"data" %>cm<br> -->
+<%= f.label :"最大サイズ" %><br>
+<%= f.number_field :size, class:"data" %>cm<br>
+<%#= f.select :size, FishingReport.sizes.keys.to_a, {}, class: "data" %><br>
 
    <%= f.label :"ルアータイプ" %><br>
 <%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>

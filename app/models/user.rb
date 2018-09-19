@@ -16,7 +16,14 @@ class User < ApplicationRecord
 	has_many :followed_users, through: :relationships, source: :followed
 	has_many :followers, through: :reverse_relationships, source: :follower
 
-  attachment :user_image
+  	attachment :user_image
+
+  	validates :introduction, length: { in: 1..200 }
+  	validates :last_name, length: { in: 1..20 }
+  	validates :first_name, length: { in: 1..20 }
+  	validates :last_name_kana, length: { in: 1..20 }
+  	validates :first_name_kana, length: { in: 1..20 }
+  	validates :nickname, length: { in: 1..20 }
  
 	def following?(other_user)
  		followed_users.include?(other_user)
