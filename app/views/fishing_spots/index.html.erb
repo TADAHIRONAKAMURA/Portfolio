@@ -1,5 +1,5 @@
 <div class="top_background"></div>
-	<!-- <div class="main-visual"> -->
+<div class="map_bg">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-2">
@@ -21,28 +21,29 @@
 			</div>
 		</div>
 	</div>
-	<div class="second-background">
-		<div class="container-fluid">
-			<div class="description">
-				<div class='row'>
-					<div class="col-md-12">
-						<table class= "table text_box">
-						<h4><% @spots.each do |spot| %>
-							<tr>
-								<td><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "no_image100x100.jpg" %></td>
-								<td class="col-md-2"><%= spot.fishing_spot_name %></td>
-								<td class="col-md-8"><%= spot.fishing_spot_body %></td>
-							</tr>
-						<% end %></h4>
-						</table>
-						<div class=pagenate_btn>
-							<%= paginate @spots, class: "pagenate" %>
-						</div>
+</div>
+<div class="second-background">
+	<div class="container-fluid">
+		<div class="description">
+			<div class='row'>
+				<div class="col-md-12">
+					<table class= "table text_box">
+					<h4><% @spots.each do |spot| %>
+						<tr>
+							<td><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "no_image100x100.jpg" %></td>
+							<td class="col-md-2"><%= spot.fishing_spot_name %></td>
+							<td class="col-md-8"><%= spot.fishing_spot_body %></td>
+						</tr>
+					<% end %></h4>
+					</table>
+					<div class=pagenate_btn>
+						<%= paginate @spots, class: "pagenate" %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 
 

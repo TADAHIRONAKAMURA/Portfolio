@@ -22,11 +22,11 @@
       <% if user_signed_in? %>
          <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
          <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
-         <!-- <li><a href="#">FISHING</a> -->
-            <!-- <ul> -->
-               <!-- <%# @spots.each do |spot| %><li><%#= link_to fishing_spot_path(spot.id) do %><%#= spot.fishing_spot_name %><%# end %></li><%# end %> -->
-            <!-- </ul> -->
-         <!-- </li> -->
+         <li><a href="#">FISHING</a>
+            <ul>
+               <% mapspot.reverse_each do |spot| %><li><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></li><% end %>
+            </ul>
+         </li>
          <li><a href="#"><%= current_user.nickname %></a>
             <ul>
                <li class="li"><%= link_to "MY PAGE", mypage_path %></li>
@@ -48,7 +48,7 @@
          <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
          <li><a href="#">FISHING</a>
             <ul>
-               <%#= render "fishing_spot/header", user: user %>
+               <% mapspot.reverse_each do |spot| %><li><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></li><% end %>
             </ul>
          </li>
          <li class="li"><%= link_to "ユーザー一覧", users_path %></li>
@@ -87,3 +87,31 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

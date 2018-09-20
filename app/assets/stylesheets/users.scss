@@ -43,3 +43,42 @@
 #modal-open {
   color: #cc0000;
 }
+
+.user_image{
+    display: block;
+    margin: auto;
+}
+
+.contract_text{
+  width: 90%;
+  margin: auto;
+  text-align: left;
+}
+
+.modal-bg {
+  display:none;
+  width:100%;
+  height:100%;
+  /*background-color: #fff;*/
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 100;
+}
+
+.modal-main {
+  display: none;
+  max-width: 1000px;
+  max-height: 650px;
+  font-size: 11px;
+  top: 50px;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+  margin: 0 auto;
+  color: #666666;
+  z-index: 200;
+  background-color: #EEEEEE;
+  position: absolute;
+  border-radius: 30px 30px 30px 30px;
+}

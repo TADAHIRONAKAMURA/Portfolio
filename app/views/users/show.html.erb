@@ -11,11 +11,14 @@
 				<tr><th>フォロワー数: </th><td class="b"><%= @user.followers.count %></td></tr>
 			</tbody>
 		</table>
-		<div style="content: '';display: block;clear:both;"></div>
-		<% if current_user.following?(@user) %>
-			<%= link_to "フォロー中", follow_path(@user.id), remote: true, class: "user_show now", data: {"id" => @user.id} %>
-		<% else %>
-			<%= link_to "フォローする", follow_path(@user.id), remote: true, class: "user_show yet", data: {"id" => @user.id} %>
+		<% if admin_signed_in? %>
+			<% else %>
+				<div style="content: '';display: block;clear:both;"></div>
+				<% if current_user.following?(@user) %>
+					<%= link_to "フォロー中", follow_path(@user.id), remote: true, class: "user_show now", data: {"id" => @user.id} %>
+				<% else %>
+					<%= link_to "フォローする", follow_path(@user.id), remote: true, class: "user_show yet", data: {"id" => @user.id} %>
+				<% end %>
 		<% end %>
 	</div>
 	<div class="col-md-9">
@@ -78,5 +81,6 @@
 			</tbody>
 		</table>
 	</div>
+</div>
 
 

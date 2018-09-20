@@ -48,13 +48,15 @@
          </div>
       </div>
    </div>
-   <div class="col-md-2 left">
+   <div class="col-md-2">
       <%= attachment_image_tag @f_report.fishing_spot, :fishing_spot_image, :fill, 200, 200, format: "jpg" %><br>
       <%= @f_report.fishing_spot.fishing_spot_body %>
    </div>
 </div>
 <div class="row">
-   <div class="col-md-12">
+   <div class="col-md-2">
+   </div>
+   <div class="col-md-8 report_text">
       <h4>釣果報告</h4>
       <%= @f_report.fishing_body %><br>
 
@@ -82,23 +84,19 @@
       <%= r.created_at.strftime('%Y/%m/%d') %><br>
       [コメント]<br>
       <%= r.comment %><br>
-      <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button<!-- > --><br><%# end %>
+      <!-- <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><%# end %> -->
       <% end %>
-   </div>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]    
-<div class="row">
-   <div class="col-md-12">
       <%= form_for [@f_report, @complaint] do |f| %>
                   <%= f.text_field :c_comment, rows:'5', class: "form-control",placeholder: "不適切な投稿を通報する" %>
           <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
       <% end %>
-
+   </div>
+   <div class="col-md-2">
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-12">
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 <管理者のみ表示>
       <% @f_report.complaints.each do |r| %>
         [投稿者]<br>
@@ -107,7 +105,7 @@
       <%= r.created_at.strftime('%Y/%m/%d') %><br>
         [コメント]<br>
       <%= r.c_comment %><br>
-      <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button<!-- > --><br><%# end %>
+      <!-- <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><%# end %> -->
       <% end %>
    </div>
 </div>
@@ -115,4 +113,9 @@
 [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 
-
+<style >
+.report_text{
+   text-align: center;
+}
+   
+</style>

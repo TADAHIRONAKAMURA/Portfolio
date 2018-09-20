@@ -1,31 +1,61 @@
-<h2> ユーザー一覧</h2>
-		<div  class="over_4">
+<div class="row">  
+   <div class="col-md-12">
+   	<h2> ユーザー一覧</h2>
+		<div  class="">
 			<table class="table-hover table">
 				<thead class="users_index_thread">
 					<tr>
-						<th class="users_index_thread_th" width="50px"> ID </th>
-						<th colspan="2" class="users_index_thread_th" width="150px">ユーザー名</th>
-						<th colspan="2" class="users_index_thread_th" width="150px">ニックネーム</th>
-						<th class="users_index_thread_th" width="200px">メールアドレス</th>
-						<th colspan="2" class="users_index_thread_th">フォロー数</th>
-						<th colspan="2" class="users_index_thread_th">フォロアー数</th>
-						<th colspan="2" class="users_index_thread_th"> </th>
-						<th colspan="2" class="users_index_thread_th"> </th>
+						<th> ID </th>
+						<th>ユーザー名</th>
+						<th>ニックネーム</th>
+						<th>メールアドレス</th>
+						<th>釣果投稿</th>
+						<th>紹介</th>
+						<th>コメント</th>
+						<th>通報</th>
+						<th>follow</th>
+						<th>follower</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody class="test">
 					<% @users.each do |user| %>
 					<tr>
-						<td class="users_index_tbody_td" width="50px"> <%= user.id %> </td>
-						<td colspan="2" class="users_index_tbody_td" width="150px"><%= user.last_name %><%= user.first_name %></td>
-						<td colspan="2" class="users_index_tbody_td" width="150px"><%= user.nickname %></td>
-						<td class="users_index_tbody_td" width="200px"> <%= user.email %> </td>
-						<td><%= link_to user.followed_users.count, tmp_path(user.id, "follow"), class: "forf", remote: true %></td>
-						<td><%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %></td>
-						<td colspan="2"> <%= link_to "編集", edit_user_path(user.id), class: 'btn btn-success' %></td>
-						<td colspan="2"> <%= link_to "退会", user_path(user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に退会させますか？" %> </td>
+						<td> <%= user.id %> </td>
+						<td><%= user.last_name %><%= user.first_name %></td>
+						<td><%= user.nickname %></td>
+						<td><%= user.email %></td>
+						<td><%= user.fishing_reports.count %>回</td>
+						<td><%= user.tackle_reports.count %>回</td>
+						<td><%= user.report_comments.count %>回</td>
+						<td><%= user.complaints.count %>回</td>
+						<td><%= link_to user.followed_users.count, tmp_path(user.id, "follow"), class: "forf", remote: true %>人</td>
+						<td><%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %>人</td>
+						<td> <%= link_to "確認・編集", edit_user_path(user.id), class: 'btn btn-success' %><br><%= link_to "退会", user_path(user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に退会させますか？" %></td>
+						
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
 		</div>
+	</div>
+</div>
+
+				<!-- <thead class="users_index_thread">
+					<tr>
+						<th class="users_index_thread_th" width="50px"> ID </th>
+						<th colspan="" class="users_index_thread_th" width="150px">ユーザー名</th>
+						<th colspan="" class="users_index_thread_th" width="150px">ニックネーム</th>
+						<th class="users_index_thread_th" width="200px">メールアドレス</th>
+						<th class="users_index_thread_th" width="200px">コメント</th>
+						<th class="users_index_thread_th" width="200px">通報</th>
+						<th colspan="" class="users_index_thread_th">follow</th>
+						<th colspan="" class="users_index_thread_th">follower</th>
+						<th colspan="2" class="users_index_thread_th"></th>
+					</tr>
+				</thead> -->
+
+
+
+
+					

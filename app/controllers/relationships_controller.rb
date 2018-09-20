@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
-  before_action :location, except: [:follow]
+  before_action :location
+  # before_action :location, except: [:follow]
 
 	def follow
   		user = User.find(params[:id])

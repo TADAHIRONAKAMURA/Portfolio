@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
 	has_many :fishing_reports,	dependent: :destroy
 	has_many :favorites,	dependent: :destroy
-	has_many :report_comment, dependent: :destroy
-	has_many :complaint,	dependent: :destroy
+	has_many :report_comments, dependent: :destroy
+	has_many :complaints,	dependent: :destroy
 	has_many :tackle_reports
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
