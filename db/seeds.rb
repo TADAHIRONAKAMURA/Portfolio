@@ -37,4 +37,5 @@ maker_name.each do |mk|
   Maker.find_or_create_by(maker_name: mk)
 end
 
+# rails db seed済み
 # Admin.create!(email: "admin@email.com", password: "adminpassword")

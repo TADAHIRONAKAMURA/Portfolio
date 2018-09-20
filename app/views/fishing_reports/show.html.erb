@@ -1,23 +1,15 @@
-<div class="row">
-   <div class="col-md-2 left">
-      <h4><%= @f_report.fishing_spot.fishing_spot_name %><br>
-      <h4><%= @f_report.fishing_spot.fishing_spot_name %><br>
-      <h4><%= @f_report.fishing_spot.fishing_spot_name %><br>
-      <h4><%= @f_report.fishing_spot.fishing_spot_name %><br>
-      <h4><%= @f_report.fishing_spot.fishing_spot_name %><br>
-      <h4><%= @f_report.fishing_spot.fishing_spot_name %><br>
-      <%= attachment_image_tag @f_report.fishing_spot, :fishing_spot_image, :fill, 200, 200, format: "jpg" %><br>
-      <%= @f_report.fishing_spot.fishing_spot_body %>
-      </h4>
+<div class="row">  
+   <div class="col-md-3">
+      <h4><%= link_to user_path(@f_report.id) do %><%= attachment_image_tag @f_report, :a_image, :fill, 50, 50, format: 'jpg' %><%= @f_report.user.nickname %><% end %>さんからの投稿</h4><br>
    </div>
-   <div class="col-md-10">
-      <p><%= link_to user_path(@f_report.user.id) do %><%= @f_report.user.nickname %><% end %>の投稿</p><br>
-      <%= attachment_image_tag @f_report, :a_image, :fill, 200, 200, format: 'jpeg' %><br>
-      <%= attachment_image_tag @f_report, :b_image, :fill, 200, 200, format: 'jpeg' %><br>
-      <%= attachment_image_tag @f_report, :c_image, :fill, 200, 200, format: 'jpeg' %><br>
-      <%= attachment_image_tag @f_report, :d_image, :fill, 200, 200, format: 'jpeg' %><br>
-      <%= attachment_image_tag @f_report, :e_image, :fill, 200, 200, format: 'jpeg' %><br>
-
+   <div class="col-md-7">
+   </div>
+   <div class="col-md-2">
+      <h4><%= @f_report.fishing_spot.fishing_spot_name %></h4><br>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-3 left">
       <h4>釣行日</h4>
       <%= @f_report.fishing_date %><br>
       <h4>釣れた時間</h4>
@@ -34,6 +26,35 @@
       <%= @f_report.retrieve %><br>
       <h4>ルアー名</h4>
       <%= @f_report.lure_name %><br>
+   </div>
+   <div class="col-md-7">
+      <div class="show_image_box">
+         <!-- <h2>タイトル</h2> -->
+         <div  class="aaa">
+            <div class="slider-for">
+               <div><%= attachment_image_tag @f_report, :a_image, format: 'jpg' %></div>
+               <div><%= attachment_image_tag @f_report, :b_image, format: 'jpg' %></div>
+               <div><%= attachment_image_tag @f_report, :c_image, format: 'jpg' %></div>
+               <div><%= attachment_image_tag @f_report, :d_image, format: 'jpg' %></div>
+               <div><%= attachment_image_tag @f_report, :e_image, format: 'jpg' %></div>
+            </div>
+            <div class="slider-nav">
+               <%= attachment_image_tag @f_report, :a_image, :fill, 300, 300, format: 'jpg' %>
+               <%= attachment_image_tag @f_report, :b_image, :fill, 300, 300, format: 'jpg' %>
+               <%= attachment_image_tag @f_report, :c_image, :fill, 300, 300, format: 'jpg' %>
+               <%= attachment_image_tag @f_report, :d_image, :fill, 300, 300, format: 'jpg' %>
+               <%= attachment_image_tag @f_report, :e_image, :fill, 300, 300, format: 'jpg' %>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-2 left">
+      <%= attachment_image_tag @f_report.fishing_spot, :fishing_spot_image, :fill, 200, 200, format: "jpg" %><br>
+      <%= @f_report.fishing_spot.fishing_spot_body %>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-12">
       <h4>釣果報告</h4>
       <%= @f_report.fishing_body %><br>
 
@@ -54,22 +75,44 @@
           <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
       <% end %>
 
-      <%#= form_for [@f_report, @complaint] do |f| %>
-                  <%#= f.text_field :c_comment, rows:'5', class: "form-control",placeholder: "違反を報告" %>
-          <%#= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-      <%# end %>
-
-
       <% @f_report.report_comments.each do |r| %>
-      <h4>[投稿者]<br>
+        [投稿者]<br>
       <%= r.user.nickname %><br>
       　[投稿日]<br>
       <%= r.created_at.strftime('%Y/%m/%d') %><br>
       [コメント]<br>
       <%= r.comment %><br>
-      <!-- <%#= link_to item_review_path(review.item,review), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><%# end %> -->
+      <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button<!-- > --><br><%# end %>
       <% end %>
-      </h4>
    </div>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]    
+<div class="row">
+   <div class="col-md-12">
+      <%= form_for [@f_report, @complaint] do |f| %>
+                  <%= f.text_field :c_comment, rows:'5', class: "form-control",placeholder: "不適切な投稿を通報する" %>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+      <% end %>
+
+<管理者のみ表示>
+      <% @f_report.complaints.each do |r| %>
+        [投稿者]<br>
+      <%= r.user.nickname %><br>
+      　[投稿日]<br>
+      <%= r.created_at.strftime('%Y/%m/%d') %><br>
+        [コメント]<br>
+      <%= r.c_comment %><br>
+      <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button<!-- > --><br><%# end %>
+      <% end %>
+   </div>
+</div>
+
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+
 

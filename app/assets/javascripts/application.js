@@ -17,6 +17,12 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+ // $(document).ready(function(){
+ //      $('.a').slick({
+ //        rtl: true
+ //      });
+ //    });
+
 
 $(function() {
 	$(document).on("ajax:success", ".follow", function(e) {
@@ -57,6 +63,46 @@ $(function() {
 			$('.table_right').addClass('active');
 		}
 	})
+
+	$(document).ready(function(){
+	$('.slider-for').slick({
+		slidesToShow: 1,
+	    slidesToScroll: 1,
+	    arrows: false,
+	    fade: true,
+	    asNavFor: '.slider-nav'
+	  });
+
+	  $('.slider-nav').slick({
+	    slidesToShow: 3,
+	    slidesToScroll: 1,
+	    asNavFor: '.slider-for',
+	    dots: true,
+	    centerMode: true,
+	    focusOnSelect: true
+      });
+   	});
+
+
+
+	// $(document).ready(function(){
+
+	// 	 $('.slider-for').slick({
+	// 	  slidesToShow: 1,
+	// 	  slidesToScroll: 1,
+	// 	  arrows: false,
+	// 	  fade: true,
+	// 	  asNavFor: '.slider-nav'
+	// 	});
+	// 	$('.slider-nav').slick({
+	// 	  slidesToShow: 3,
+	// 	  slidesToScroll: 1,
+	// 	  asNavFor: '.slider-for',
+	// 	  dots: true,
+	// 	  centerMode: true,
+	// 	  focusOnSelect: true
+	// 	});
+	// });
 
 
 

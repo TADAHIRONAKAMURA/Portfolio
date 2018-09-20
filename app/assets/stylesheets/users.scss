@@ -15,6 +15,7 @@
 }
 .users_signup {
 	text-align: center;
+	padding-bottom: 70px;
 }
 
 .contract_box{
@@ -24,10 +25,6 @@
 .field {
 	margin: 5px 0px 5px 0px;
 }
-.actions {
-	margin: 5px 0px 50px 0px;
-}
-
 .contract_text{
 	width: 70%;
 	margin: auto;
@@ -36,7 +33,7 @@
 
 
 #contents {
-  z-index: 0;
+  // z-index: 0;
   font-size: 16px;
 }
 .page-txt {
@@ -46,27 +43,3 @@
 #modal-open {
   color: #cc0000;
 }
-/* モーダル コンテンツエリア */
-#modal-main {
-　　display: none;
-　　width: 500px;
-　　height: 300px;
-　　margin: 0;
-　　padding: 0;
-　　background-color: #ffffff;
-　　color: #666666;
-　　position:fixed;
-　　z-index: 2;
-}
-/* モーダル 背景エリア */
-#modal-bg {
-　　display:none;
-　　width:100px;
-　　height:100px;
-　　background-color: rgba(0,0,0,0.5);
-　　position:fixed;
-　　top:0;
-　　left:0;
-　　z-index: 1;
-}
-

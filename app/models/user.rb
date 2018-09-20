@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   	attachment :user_image
 
-  	validates :introduction, length: { in: 1..200 }
+  	validates :introduction, length: { maximum:300 }
   	validates :last_name, length: { in: 1..20 }
   	validates :first_name, length: { in: 1..20 }
   	validates :last_name_kana, length: { in: 1..20 }

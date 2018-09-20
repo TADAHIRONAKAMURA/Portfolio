@@ -8,6 +8,6 @@
 <% end %>
 <td></td>
 <td></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %>人</td>
+<td><%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %>人</td>
 
 

@@ -8,6 +8,10 @@
 
    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </head>
 
 <body>
@@ -44,7 +48,7 @@
          <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
          <li><a href="#">FISHING</a>
             <ul>
-               <%= render "fishing_spot/header", user: user %>
+               <%#= render "fishing_spot/header", user: user %>
             </ul>
          </li>
          <li class="li"><%= link_to "ユーザー一覧", users_path %></li>
@@ -54,7 +58,7 @@
                <li class="li"><%= link_to "top登録ページ", new_fishing_spot_path %></li>
                <li class="li"><%= link_to "ユーザー一覧(管理者用)", user_index_path %></li>
                <li class="li"><%= link_to "投稿一覧(管理者用)", fishing_reports_path %></li>
-               <li><a href="#">LOGOUT</a>
+               <li class="li"><%= link_to "LOG OUT", destroy_admin_session_path, method: :delete %></li>
             </ul>
          </li>
       <% else %>

@@ -1,6 +1,8 @@
 class FishingSpotsController < ApplicationController
 	def index
 		@spots = FishingSpot.page(params[:page]).reverse_order
+		@map_spots = FishingSpot.all
+
 	end
 
 	def new

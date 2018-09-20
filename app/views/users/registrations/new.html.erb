@@ -1,7 +1,7 @@
 <div class="users_signup">
-<h4><strong> 新規会員登録（下記を入力して下さい） </strong></h4>
+  <h4><strong> 新規会員登録（下記を入力して下さい） </strong></h4>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -46,124 +46,123 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class=field >
 
-   利用規約を確認してくだい。<br>
-  <%= link_to "利用規約", contract_path %><br>
-
-    <%= f.check_box :registration_check %>
-    <%= f.label :BASSCOCOPOLICYに同意する %>
-  </div>
-
-
-
-<div id="modal-main">
-  
-  <div class=field >
-     利用規約を確認してくだい。<br>
-    <%= link_to "利用規約", contract_path %><br>
-
-    <%= f.check_box :registration_check %>
-    <%= f.label :BASSCOCOPOLICYに同意する %>
-  </div>
-</div>
- 
-<!-- #contents START -->
-  <div id="contents">
-    
-    <p><a id="modal-open">【クリックしてBASSCOCOPOLICYをお読みくだい】</a></p>
-    <p class="page-txt">ここからページ本文<br>
+  <div id="contents"> 
+    <div class=field >
+    <p class="page-txt"><a id="modal-open">【クリックしてBASSCOCOPOLICYをお読みくだい】</a></p><br>
+      <%#= f.check_box :registration_check %>
+      <%#= f.label :BASSCOCOPOLICYに同意する %>
+    </div>
     <br>
-    ↓↓↓　スクロールしてください ↓↓↓</p>
+    <div class="actions">
+      <%= f.submit '登録' %>
+    </div>
+    <div class="modal-bg"></div>
+    <div class="modal-main">
+      <h3>BASSCOCOPOLICY</h3>
+      <h5>マナーを守って楽しい釣りを！</h5>
+
+      <div class= contract_text>
+        先行者に挨拶をする<br>
+        釣りに限らず社会の中で基本的な所作であるが、先行者に挨拶もせずにポイントに入ってくるアングラーもいる。無言で見知らぬ人が隣で釣りをし出したら気持ちの良いものではないだろう。<br>
+        <br>
+        「こんにちは」と一声かけるだけでも十分なので、先行者が居たら挨拶をするようにすればお互い気持ちよく釣りをすることができる。その際に、さらに釣果を聞いたりすれば、思わぬ情報が手に入るかも。<br>
+        <br>
+        釣り場に割り込まない<br>
+        人気のフィールドともなると、夜明けからアングラーが集まり、釣りをする場所を確保するのが難しいこともある。しかし、アングラーの間の狭いスペースに割り込んで釣りをするのは、たとえ声掛けをしたとしてもお祭りなどのトラブルの元にもなり、あまり好ましくない行為です。
+        友人同士なら構わないが、自身が釣りをする十分なスペースが無い場合は空くまで待つか、他の釣り場に行くようにしよう。<br>
+        <br>
+        ルアー釣りの場合の注意点<br>
+        ルアーのアングラーと餌釣りのアングラーがトラブルを起こすというのは良く聞く話。餌釣りのアングラーの近くで竿を振るのを避けるのが無難だが、間のスペースをしっかりとり、お祭りをしないよう注意してルアーをキャストすれば問題は無いだろう。やはりここでも、最初に挨拶をすることでトラブルを回避することができる可能性もある。<br>
+        <br>
+        ゴミは持ち帰る<br>
+        当たり前のことであるが、最低でも自分で出したゴミは持ち帰るべき。自分のゴミでなくとも近くに落ちているゴミがあったら見過ごさずに回収しよう。<br>
+        <br>
+        魚を放置しない<br>
+        外道が釣れるとイライラしてそのまま陸に放置するアングラーは多いが、普通のアングラーからしてみれば大変不快な行為。放置したとしても外道の数が減るわけでもなく、条例・漁業調整規則に違反しない範囲で優しくリリースしてあげよう。<br>
+        <br>
+        大声にも注意<br>
+        仲間同士で釣りをしていると、ついつい楽しく大声で笑ったり話したりしがちだが、それを良く思わない他のアングラーもいる。決して小声で話せというわけではなく、ある程度の限度を守って会話をしよう。<br>
+        <br>
+        ヘッドライトを当てない<br>
+        ヘッドライトは非常に光が強いものも多く、他の人に光を当てるとまぶしく視界を奪うため危険だ。なるべく人の顔を照らさないように注意しよう。<br>
+        <br>
+        マナーを守って快適な釣りを<br>
+        守るべきマナーを挙げればきりがないですが、マナーを守って、みんなで釣りを楽しみましょう。
+      </div>
+      <div class=field >
+        <div class="check_btn">
+        <%= f.check_box :registration_check %>
+        <%= f.label :同意する %><br>
+        <a href="#">CLOSE</a><br>
+        </div>
+        <%= link_to "プライバシーポリシー", contract_path %><br>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit '登録' %>
-<!--     <button class="submit" data-action="users #users/:id/addresses/new #addresses#new"> 次へ </button> -->
-  </div>
-
-<%#= render "users/shared/links" %>
-
-
 <% end %>
-
 </div>
-
-<!-- <div class="field text-left"> -->
-  <%#= f.check_box :accepted ,{},checked_value = "true",unchecked_value = "false" %>
-  <%#= f.label '利用規約、及び、個人情報の取扱に同意する' %>
-<!-- </div> -->
-<div class="aaa"></div>
-<div class="bbb">
-  <h3>釣りを楽しむために守るべきマナー</h3>
-  <div class= contract_text>
-    先行者に挨拶をする<br>
-    釣りに限らず社会の中で基本的な所作であるが、先行者に挨拶もせずにポイントに入ってくるアングラーもいる。無言で見知らぬ人が隣で釣りをし出したら気持ちの良いものではないだろう。<br>
-    <br>
-    「こんにちは」と一声かけるだけでも十分なので、先行者が居たら挨拶をするようにすればお互い気持ちよく釣りをすることができる。その際に、さらに釣果を聞いたりすれば、思わぬ情報が手に入るかも。<br>
-    <br>
-    釣り場に割り込まない<br>
-    人気のフィールドともなると、夜明けからアングラーが集まり、釣りをする場所を確保するのが難しいこともある。しかし、アングラーの間の狭いスペースに割り込んで釣りをするのは、たとえ声掛けをしたとしてもお祭りなどのトラブルの元にもなり、あまり好ましくない行為です。
-    友人同士なら構わないが、自身が釣りをする十分なスペースが無い場合は空くまで待つか、他の釣り場に行くようにしよう。<br>
-    <br>
-    ルアー釣りの場合の注意点<br>
-    ルアーのアングラーと餌釣りのアングラーがトラブルを起こすというのは良く聞く話。餌釣りのアングラーの近くで竿を振るのを避けるのが無難だが、間のスペースをしっかりとり、お祭りをしないよう注意してルアーをキャストすれば問題は無いだろう。やはりここでも、最初に挨拶をすることでトラブルを回避することができる可能性もある。<br>
-    <br>
-    ゴミは持ち帰る<br>
-    当たり前のことであるが、最低でも自分で出したゴミは持ち帰るべき。自分のゴミでなくとも近くに落ちているゴミがあったら見過ごさずに回収しよう。<br>
-    <br>
-    魚を放置しない<br>
-    外道が釣れるとイライラしてそのまま陸に放置するアングラーは多いが、普通のアングラーからしてみれば大変不快な行為。放置したとしても外道の数が減るわけでもなく、条例・漁業調整規則に違反しない範囲で優しくリリースしてあげよう。<br>
-    <br>
-    大声にも注意<br>
-    仲間同士で釣りをしていると、ついつい楽しく大声で笑ったり話したりしがちだが、それを良く思わない他のアングラーもいる。決して小声で話せというわけではなく、ある程度の限度を守って会話をしよう。<br>
-    <br>
-    ヘッドライトを当てない<br>
-    ヘッドライトは非常に光が強いものも多く、他の人に光を当てるとまぶしく視界を奪うため危険だ。なるべく人の顔を照らさないように注意しよう。<br>
-    <br>
-    マナーを守って快適な釣りを<br>
-    守るべきマナーを挙げればきりがないが、マナーを守って、みんなで釣りを楽しみましょう。
-  </div>
-</div>
-
-
 
 <style>
-  .aaa {
+.contract_text{
+  width: 90%;
+  margin: auto;
+  text-align: left;
+}
+
+  .modal-bg {
     display:none;
-    width:70%;
-    height:70%;
-    background-color: #fff;
+    width:100%;
+    height:100%;
+    /*background-color: #fff;*/
     position:fixed;
     top:0;
     left:0;
     z-index: 100;
   }
-  .bbb {
+
+  .modal-main {
     display: none;
     max-width: 1000px;
-    top: 0;
+    max-height: 650px;
+    font-size: 11px;
+    top: 50px;
     left: 0;
-    bottom: 0;
+    bottom: 0px;
     right: 0;
     margin: 0 auto;
     color: #666666;
     z-index: 200;
+    background-color: #EEEEEE;
     position: absolute;
+    border-radius: 30px 30px 30px 30px;
   }
 </style>
 
 <script>
   $(function() {
     $(document).on("click", "#modal-open", function() {
-      $('.aaa').css('display', 'block');
-      $('.bbb').fadeIn();
+      $('.modal-bg').css('display', 'block');
+      $('.modal-main').fadeIn();
     })
-    $('.aaa').click(function(e) {
-      $('.aaa').fadeOut();
-      $('.bbb').fadeOut();
+    $('.check_btn').click(function(e) {
+      $('.modal-bg').fadeOut();
+      $('.modal-main').fadeOut();
     })
   })
 </script>
+
+<!-- <script>
+  $(function() {
+    $(document).on("click", "#modal-open", function() {
+      $('.modal-bg').css('display', 'block');
+      $('.modal-main').fadeIn();
+    })
+    $('.modal-bg').click(function(e) {
+      $('.modal-bg').fadeOut();
+      $('.modal-main').fadeOut();
+    })
+  })
+</script> -->
 
 
