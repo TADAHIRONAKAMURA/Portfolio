@@ -1,4 +1,6 @@
 class FishingSpotsController < ApplicationController
+	before_action :authenticate_admin!, except: [:index, :show]
+
 	def index
 		@spots = FishingSpot.page(params[:page]).reverse_order
 		@map_spots = FishingSpot.all

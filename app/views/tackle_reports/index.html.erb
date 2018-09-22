@@ -1,7 +1,7 @@
 <div class="main-visual">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 tackle_box">
 				<h2>Tackle</h2>
 				<table  class="table">
 					<thead>
@@ -29,6 +29,9 @@
 						<% end %>
 					</tbody>
 				</table>
+				<div class=pagenate_btn>
+					<%= paginate @tackles, class: "pagenate" %>
+				</div>
 			</div>
 		</div>
 	</div>

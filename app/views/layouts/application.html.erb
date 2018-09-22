@@ -22,6 +22,7 @@
       <% if user_signed_in? %>
          <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
          <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
+         <li class="li"><%= link_to "POLICY", contract_path %></li>
          <li><a href="#">FISHING</a>
             <ul>
                <% mapspot.reverse_each do |spot| %><li><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></li><% end %>
@@ -31,16 +32,7 @@
             <ul>
                <li class="li"><%= link_to "MY PAGE", mypage_path %></li>
                <li class="li"><%= link_to "USER", users_path %></li>
-               <li class="li"><%= link_to "POLICY", contract_path %></li>
                <li class="li"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
-            </ul>
-         </li>
-         <li><a href="#">ADMIN</a>
-            <ul>
-               <li class="li"><%= link_to "釣果報告投稿ページ", new_fishing_report_path %></li>
-               <li class="li"><%= link_to "top登録ページ", new_fishing_spot_path %></li>
-               <li class="li"><%= link_to "ユーザー一覧(管理者用)", user_index_path %></li>
-               <li class="li"><%= link_to "投稿一覧(管理者用)", fishing_reports_path %></li>
             </ul>
          </li>
       <% elsif admin_signed_in? %>
@@ -64,9 +56,9 @@
       <% else %>
          <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
          <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
+         <li class="li"><%= link_to "POLICY", contract_path %></li>
          <li class="li"><%= link_to "LOG IN", new_user_session_path %></li>
          <li class="li"><%= link_to "SIGN UP", new_user_registration_path %></li>
-         <li class="li"><%= link_to "POLICY", contract_path %></li>
       <% end %>
    </ul>
 

@@ -1,4 +1,6 @@
 <div class="users_signup">
+  <br>
+  <br>
   <h4><strong> 新規会員登録（下記を入力して下さい） </strong></h4>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -49,7 +51,7 @@
 
   <div id="contents"> 
     <div class=field >
-    <p class="page-txt"><a id="modal-open">【クリックしてBASSCOCOPOLICYをお読みくだい】</a></p><br>
+    <p class="page-txt"><a id="modal-open"><button type="button" class="btn btn-info active">【クリックしてBASSCOCOPOLICYに同意してください】</button></a></p><br>
       <%#= f.check_box :registration_check %>
       <%#= f.label :BASSCOCOPOLICYに同意する %>
     </div>
@@ -102,70 +104,4 @@
   </div>
 <% end %>
 </div>
-
-<!-- <style>
-.contract_text{
-  width: 90%;
-  margin: auto;
-  text-align: left;
-}
-
-  .modal-bg {
-    display:none;
-    width:100%;
-    height:100%;
-    /*background-color: #fff;*/
-    position:fixed;
-    top:0;
-    left:0;
-    z-index: 100;
-  }
-
-  .modal-main {
-    display: none;
-    max-width: 1000px;
-    max-height: 650px;
-    font-size: 11px;
-    top: 50px;
-    left: 0;
-    bottom: 0px;
-    right: 0;
-    margin: 0 auto;
-    color: #666666;
-    z-index: 200;
-    background-color: #EEEEEE;
-    position: absolute;
-    border-radius: 30px 30px 30px 30px;
-  }
-</style>
-
-<script>
-  $(function() {
-    $(document).on("click", "#modal-open", function() {
-      $('.modal-bg').css('display', 'block');
-      $('.modal-main').fadeIn();
-    })
-    $('.check_btn').click(function(e) {
-      $('.modal-bg').fadeOut();
-      $('.modal-main').fadeOut();
-    })
-  })
-</script> -->
-
-
-
-<!-- <script>
-  $(function() {
-    $(document).on("click", "#modal-open", function() {
-      $('.modal-bg').css('display', 'block');
-      $('.modal-main').fadeIn();
-    })
-    $('.modal-bg').click(function(e) {
-      $('.modal-bg').fadeOut();
-      $('.modal-main').fadeOut();
-    })
-  })
-</script> -->
-
-
 

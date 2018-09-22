@@ -1,28 +1,33 @@
 class FishingReportsController < ApplicationController
 	def index
-		@f_reports = FishingReport.all
-		@tackles = TackleReport.all
-		@spots = FishingSpot.all
-		@lure_types = LureType.all
-
-	end
-
-	def report_index
-		@f_reports = FishingReport.all
+		if admin_signed_in?
+			@f_reports = FishingReport.all
+			@tackles = TackleReport.all
+			@spots = FishingSpot.all
+			@lure_types = LureType.all
+		else
+			redirect_to root_path
+		end
 	end
 
 	def new
+		if user_signed_in? || admin_signed_in?
 		@f_report = FishingReport.new
 		@luretype = LureType.all
+		else
+			redirect_to root_path
+		end
 	end
 
 	def create
 		@f_report = FishingReport.new(fishing_report_params)
 		@f_report.user_id = current_user.id
-		@f_report.save
-		# puts @f_report.errors.full_messages
-		redirect_to mypage_path
-		flash[:notice]="釣果報告が完了しました！"
+		if @f_report.save
+			redirect_to mypage_path
+			flash[:notice]="釣果報告が完了しました！"
+		else
+			render :new
+		end
 		
 
 		# if @f_report.save
@@ -36,18 +41,30 @@ class FishingReportsController < ApplicationController
 	end
 
 	def show
-		@f_report = FishingReport.find(params[:id])
-		# @f_report = FishingReport.find_by(id: params[:id])
-		@f_reports = FishingReport.all
-		@spots = FishingSpot.all
-		@lure_types = LureType.all
-		@comment = ReportComment.new 
-		@complaint = Complaint.new
+		if user_signed_in? || admin_signed_in?
+			@f_report = FishingReport.find(params[:id])
+			# @f_report = FishingReport.find_by(id: params[:id])
+			@f_reports = FishingReport.all
+			@spots = FishingSpot.all
+			@lure_types = LureType.all
+			@comment = ReportComment.new 
+			@complaint = Complaint.new
+		else
+			redirect_to root_path
+			flash[:notice]="ログインもしくはサインアップしてから閲覧してください。！"
+		end
 	end
 
 	def edit
-		@f_report = FishingReport.find(params[:id])
-		# @f_report = FishingReport.find_by(id: params[:id])
+		if admin_signed_in?
+			@f_report = FishingReport.find(params[:id])
+		elsif user_signed_in?
+			@f_report = FishingReport.find(params[:id])
+			@user == current_user
+		else
+			redirect_to root_path
+		end
+		# @f_report = FishingReport.find(params[:id])
 	end
 
 	

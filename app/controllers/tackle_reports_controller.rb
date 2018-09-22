@@ -1,8 +1,6 @@
 class TackleReportsController < ApplicationController
 	def index
-		@tackles = TackleReport.all
-		# @spots = FishingSpot.all
-		# @lure_types = LureType.all
+		@tackles = TackleReport.page(params[:page]).reverse_order
 	end
 
 	def new

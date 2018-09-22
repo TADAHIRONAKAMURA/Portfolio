@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 	get '/mypage' => 'users#mypage'
 	get '/contract' => 'users#contract'
 	get '/user_index' => 'users#user_index'
+	get '/user_show' => 'users#user_show'
 	# get '/report_index' => 'fishing_reports#report_index'
 	
 	# get 'fishing_reports/admin_index'

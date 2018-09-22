@@ -12,7 +12,9 @@
 .login_title {
 	margin-top: 100px;
 	text-align: center;
+  padding: 100px 0 250px 0;
 }
+
 .users_signup {
 	text-align: center;
 	padding-bottom: 70px;
@@ -38,9 +40,10 @@
 }
 .page-txt {
   margin: 30px 0 0;
-  // height: 2000px;
+  cursor: pointer;
 }
-#modal-open {
+
+.modal-open {
   color: #cc0000;
 }
 

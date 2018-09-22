@@ -8,6 +8,7 @@
 						<th> ID </th>
 						<th>ユーザー名</th>
 						<th>ニックネーム</th>
+						<th>ニックネーム</th>
 						<th>メールアドレス</th>
 						<th>釣果投稿</th>
 						<th>紹介</th>
@@ -22,7 +23,8 @@
 					<% @users.each do |user| %>
 					<tr>
 						<td> <%= user.id %> </td>
-						<td><%= user.last_name %><%= user.first_name %></td>
+						<td><%# link_to user_show_path(user.id) do %><%= user.last_name %><%= user.first_name %><%# end %></td>
+						<td><%= link_to "#{user.last_name}(#{user.first_name})", user_show_path(user.id) %></td>
 						<td><%= user.nickname %></td>
 						<td><%= user.email %></td>
 						<td><%= user.fishing_reports.count %>回</td>

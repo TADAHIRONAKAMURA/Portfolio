@@ -79,4 +79,3 @@ gem 'kaminari'
 
 
 
-
