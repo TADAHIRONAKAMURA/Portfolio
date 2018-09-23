@@ -4,12 +4,13 @@ ja:
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
-        
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      fishing_report: 釣果報告
+      tackle_report: TACKLE紹介
     attributes:
       user:
         id: ID
@@ -26,6 +27,27 @@ ja:
         last_name_kana: セイ
         first_name_kana: メイ
         nickname: ニックネーム
+      fishing_report:
+        id: ID
+        a_image: 写真①
+        fishing_spot: ポイント名
+        fishing_date: 釣行日
+        time: 時間
+        weather: 天気 
+        size: 最大サイズ
+        lure_type: ルアータイプ
+        range: レンジ
+        retrieve: リトリーブ
+        lure_name: ルアー名
+        fishing_body: 釣果報告
+      tackle_report:
+        id: ID
+        tackle_image: 写真
+        evaluation: オススメ度
+        maker: メーカー
+        lure_type: ルアータイプ
+        tackle_name: ルアー名
+        tackle_body: 紹介文
   date:
     abbr_day_names:
     - 日

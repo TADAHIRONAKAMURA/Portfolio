@@ -55,11 +55,12 @@
    <div class="col-md-2">
    </div>
    <div class="col-md-8 report_text">
+      
       <h4>釣果報告</h4>
       <% unless admin_signed_in? %>
          <%= @f_report.fishing_body %><br>
          <% if @f_report.favorited_by?(current_user) %>
-             <%= link_to fishing_report_favorite_path(@f_report), method: :delete do %>
+             <%= link_to fishing_report_favorites_path(@f_report.id), method: :delete do %>
                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
                <%= @f_report.favorites.count %> いいね
              <% end %>
@@ -69,6 +70,14 @@
                <%= @f_report.favorites.count %> いいね
              <% end %>
          <% end %>
+      <% end %>
+
+      <% if flash[:notice] %>
+         <div class=notice><%= flash[:notice] %></div>
+      <% end %>
+
+      <% if flash[:alert] %>
+         <div class=alert><%= flash[:alert] %></div>
       <% end %>
 
       <%= form_for [@f_report, @comment] do |f| %>
@@ -83,7 +92,7 @@
       <%= r.created_at.strftime('%Y/%m/%d') %><br>
       [コメント]<br>
       <%= r.comment %><br>
-      <!-- <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><%# end %> -->
+      <%= link_to fishing_report_report_comment_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><% end %>
       <% end %>
       <%= form_for [@f_report, @complaint] do |f| %>
                   <%= f.text_field :c_comment, rows:'5', class: "form-control",placeholder: "不適切な投稿を通報する" %>
@@ -104,7 +113,7 @@
       <%= r.created_at.strftime('%Y/%m/%d') %><br>
         [コメント]<br>
       <%= r.c_comment %><br>
-      <!-- <%#= link_to item_review_path(r.comment), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><%# end %> -->
+      <%= link_to fishing_report_complaint_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="">削除</button><br><% end %>
       <% end %>
    </div>
 </div>

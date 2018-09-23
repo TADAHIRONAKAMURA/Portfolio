@@ -13,9 +13,16 @@ class FishingReport < ApplicationRecord
   	attachment :d_image
   	attachment :e_image
 
-  	validates :fishing_body, length: { maximum:300 }
-  	validates :lure_name, length: { maximum:25 }
-
+  	validates :fishing_body, presence: true, length: { in: 1..300 }
+  	validates :lure_name, presence: true, length: { in: 1..25 }
+  	validates :fishing_date, presence: true
+  	validates :time, presence: true
+  	validates :weather, presence: true
+  	validates :size, presence: true
+  	validates :range, presence: true
+  	validates :retrieve, presence: true
+  	validates :fishing_body, presence: true
+  	validates :a_image, presence: true
 
 
 		
@@ -32,3 +39,4 @@ class FishingReport < ApplicationRecord
 	end
 	
 end
+

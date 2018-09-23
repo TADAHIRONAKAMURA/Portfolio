@@ -10,10 +10,12 @@ class TackleReportsController < ApplicationController
 	def create
 		@tackle = TackleReport.new(tackle_report_params)
 		@tackle.user_id = current_user.id
-		@tackle.save
-		# puts @f_report.errors.full_messages
-		redirect_to tackle_reports_path(@tackle.id)
-		flash[:notice]="Tackle紹介が完了しました！"
+		if @tackle.save
+			redirect_to tackle_reports_path(@tackle.id)
+			flash[:notice]="Tackle紹介が完了しました！"
+		else
+			render :new
+		end
 	end
 
 	def edit

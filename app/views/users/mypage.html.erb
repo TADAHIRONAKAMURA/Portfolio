@@ -1,6 +1,7 @@
 <!-- <div class="main-visual"></div> -->
 <!-- <div class="container"> -->
 <div class="row">
+	<% if flash[:notice] %><div class=notice><%= flash[:notice] %></div><% end %>
 	<div class="col-md-6">
 		<div class="users_show_left">
 		<h4 class="users_names"><strong><%= @user.last_name %><%= @user.first_name %>さんのマイページ</strong></h4>
@@ -24,7 +25,6 @@
 			<% @user.followed_users.each do |user| %>
 				<% if FishingReport.exists?(user_id: user) %>
 					<% f_report = FishingReport.where(user_id: user).last %>
-					<%# user.fishing_reports.each do |f_report| %>
 					<tr>
 						<td><%= f_report.created_at.strftime('%Y/%m/%d') %></td>
 						<td><%= f_report.user.nickname %></td>

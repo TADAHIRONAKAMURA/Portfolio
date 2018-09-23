@@ -1,4 +1,6 @@
 class FishingReportsController < ApplicationController
+	before_action :user_admin
+
 	def index
 		if admin_signed_in?
 			@f_reports = FishingReport.all
@@ -11,12 +13,8 @@ class FishingReportsController < ApplicationController
 	end
 
 	def new
-		if user_signed_in? || admin_signed_in?
 		@f_report = FishingReport.new
 		@luretype = LureType.all
-		else
-			redirect_to root_path
-		end
 	end
 
 	def create
@@ -28,31 +26,15 @@ class FishingReportsController < ApplicationController
 		else
 			render :new
 		end
-		
-
-		# if @f_report.save
-		# 	redirect_to fishing_reports_path(@f_report.id)
-		# 	flash[:notice]="釣果報告が完了しました！"
-		# else
-		# 	@f_report = FishingReport.all
-		# 	render :new_fishing_report
-		# end
-
 	end
 
 	def show
-		if user_signed_in? || admin_signed_in?
 			@f_report = FishingReport.find(params[:id])
-			# @f_report = FishingReport.find_by(id: params[:id])
 			@f_reports = FishingReport.all
 			@spots = FishingSpot.all
 			@lure_types = LureType.all
 			@comment = ReportComment.new 
 			@complaint = Complaint.new
-		else
-			redirect_to root_path
-			flash[:notice]="ログインもしくはサインアップしてから閲覧してください。！"
-		end
 	end
 
 	def edit
@@ -64,10 +46,7 @@ class FishingReportsController < ApplicationController
 		else
 			redirect_to root_path
 		end
-		# @f_report = FishingReport.find(params[:id])
 	end
-
-	
 
 	def update
 		@f_report = FishingReport.find(params[:id])
@@ -84,5 +63,13 @@ class FishingReportsController < ApplicationController
 	private
 	def fishing_report_params
 		params.require(:fishing_report).permit(:fishing_spot_id, :fishing_date, :time, :weather, :size, :lure_type_id, :range, :retrieve, :lure_name, :fishing_body, :a_image, :b_image, :c_image, :d_image, :e_image )
+	end
+
+	def user_admin
+		if user_signed_in? || admin_signed_in?
+		else
+			redirect_to root_path
+			flash[:notice]="ログインもしくはサインアップしてから閲覧してください。！"
+		end	
 	end
 end
