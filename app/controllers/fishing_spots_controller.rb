@@ -21,6 +21,7 @@ class FishingSpotsController < ApplicationController
 	def show
 		@spot = FishingSpot.find(params[:id])
 		@f_reports = FishingReport.where(fishing_spot_id: @spot.id)
+		@f_reports = @f_reports.all.order(created_at: :desc)
 		@spots = FishingSpot.all
 		@lure_types = LureType.all
 	end

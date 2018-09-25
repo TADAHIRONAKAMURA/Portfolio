@@ -1,27 +1,35 @@
-<h4>Tackle紹介編集</h4>
-
-<%= form_for(@tackle) do |f| %>
-
-<%= f.label :"写真" %><br>
-<%= f.attachment_field :tackle_image, placeholder:"Tackle写真", class:"data" %><br>
-
-<%= f.label :"オススメ度" %><br>
-<%= f.select :evaluation, TackleReport.evaluations.keys.to_a, {}, class: "data" %><br>
-
-<%= f.label :"メーカー" %><br>
-<%= f.select :maker_id, Maker.all.collect { |p| [ p.maker_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
-
-<%= f.label :"ルアータイプ" %><br>
-<%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
-
-<%= f.label :"ルアー名" %><br>
-<%= f.text_field :tackle_name, class:"data" %><br>
-
-<%= f.label :"紹介文" %><br>
-<%= f.text_area :tackle_body, class:"data" %><br>
-
-<p><%= f.submit '上記の内容で変更する', class:"btn btn-success active data" %></p>
-
-<% end %>
-
-
+<div class='tackle_new'>
+	<div class='row'>
+		<% if @tackle.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<h4  class="alert_h4"><%= pluralize(@tackle.errors.count, "error") %> prohibited this artist from being saved:</h4>
+			<ul>
+			<% @tackle.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end %>
+		<div  class="col-md-12 col-sm-12">
+			<h3>Tackle紹介編集</h3>
+			<div class="box2">
+				<%= form_for(@tackle) do |f| %>
+				<%= f.label :"TACKL写真（必須）" %><br>
+				<%= f.attachment_field :tackle_image, placeholder:"Tackle写真", class:"data a" %><br>
+				<%= f.label :"オススメ度（必須）" %><br>
+				<%= f.select :evaluation, TackleReport.evaluations.keys.to_a, {}, class: "data" %><br>
+				<%= f.label :"メーカー（必須）" %><br>
+				<%= f.select :maker_id, Maker.all.collect { |p| [ p.maker_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
+				<%= f.label :"ルアータイプ（必須）" %><br>
+				<%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
+				<%= f.label :"ルアー名（必須）" %><br>
+				<%= f.text_field :tackle_name, class:"data" %><br>
+				<%= f.label :"紹介文（必須）" %><br>
+				<%= f.text_area :tackle_body, class:"data" %><br>
+				<p><%= f.submit '上記の内容で登録する', class:"btn btn-success active data" %></p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

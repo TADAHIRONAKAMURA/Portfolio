@@ -1,29 +1,33 @@
-<h2> ユーザー一覧</h2>
-		<div  class="over_4">
-			<table class="table-hover table">
-				<thead class="users_index_thread">
-					<tr>
-						<th class=""> ID </th>
-						<th class=""></th>
-						<th colspan="2" class=""> ユーザー名 </th>
-						<th colspan="2" class="">introduction</th>
-						<th colspan="2" class="">釣果投稿数</th>
-						<th colspan="2" class="">フォロワー数</th>
-					</tr>
-				</thead>
-				<tbody class="test">
-					<% @users.each do |user| %>
-					<tr>
-						<td class="users_index_tbody_td" width="50px"><%= user.id %></td>
-						<th class=""><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></th>
-						<%#= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "noimage2.png", class: "noimage" %>
-						<td colspan="2" class="users_index_tbody_td" width="150px"><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
-						<td colspan="2" class="users_index_tbody_td" width="150px"><%= user.introduction %></td>
-						<td colspan="2" class="users_index_tbody_td" width="150px"><%= user.introduction %></td>
-						<td colspan="2" class="users_index_tbody_td" width="150px"><%= user.introduction %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+<div class="user_index_background">
+   	<div class="user_table">
+     	<div class="row">  
+        	<div class="col-md-12">
+        		<div align="center"><h3> ユーザー一覧</h3></div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="col-md-2"></th>
+							<th class="col-md-2"> ニックネーム </th>
+							<th class="col-md-5">introduction</th>
+							<th class="col-md-1">釣果投稿数</th>
+							<th class="col-md-1">フォロワー数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @users.each do |user| %>
+						<tr>
+							<th class="col-md-2"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></th>
+							<td class="col-md-2"><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
+							<td class="col-md-5"><%= user.introduction %></td>
+							<td class="col-md-1"><%= user.fishing_reports.count %>回</td>
+							<td class="col-md-1"><%= link_to user.followers.count, tmp_path(user.id, "フォロワー"), class: "forf", remote: true %>人</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
+	</div>
+</div>
+
 

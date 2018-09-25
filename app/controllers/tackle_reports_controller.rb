@@ -11,8 +11,12 @@ class TackleReportsController < ApplicationController
 		@tackle = TackleReport.new(tackle_report_params)
 		@tackle.user_id = current_user.id
 		if @tackle.save
-			redirect_to tackle_reports_path(@tackle.id)
-			flash[:notice]="Tackle紹介が完了しました！"
+			if admin_signed_in?
+				redirect_to tackle_reports_path
+			elsif user_signed_in?
+				redirect_to mypage_path
+				flash[:notice]="Tackle紹介の投稿が完了しました！"
+			end
 		else
 			render :new
 		end
@@ -20,19 +24,28 @@ class TackleReportsController < ApplicationController
 
 	def edit
 		@tackle = TackleReport.find(params[:id])
-		# @f_report = FishingReport.find_by(id: params[:id])
 	end
 
 	def update
 		@tackle = TackleReport.find(params[:id])
 		@tackle.update(tackle_report_params)
-		redirect_to tackle_reports_path
+		if admin_signed_in?
+			redirect_to tackle_reports_path
+		elsif user_signed_in?
+			redirect_to mypage_path
+			flash[:notice]="Tackle紹介の編集が完了しました！"
+		end
 	end
 
 	def destroy
 		@tackle = FishingReport.find(params[:id])
 		@tackle.destroy
-		redirect_to ftackle_reports_path
+		if admin_signed_in?
+			redirect_to tackle_reports_path
+		elsif user_signed_in?
+			redirect_to mypage_path
+			flash[:notice]="Tackle紹介の削除が完了しました！"
+		end
 	end
 
 	private

@@ -1,68 +1,70 @@
-<!-- <div class="main-visual"></div> -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>投稿一覧</h1>
 		</div>
 		<div class="col-md-7">
-			<table  class="table">
-				<caption>釣果報告一覧</caption>
-				<thead>
-					<tr>
-						<th></th>
-						<th>投稿日</th>
-						<th>釣行日</th>
-						<th>ユーザー名</th>
-						<th>ニックネーム</th>
-						<th>ポイント名</th>
-						<th>最大サイズ</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-				<% @f_reports.each do |report| %>
-					<tr>
-						<td><%= link_to fishing_report_path(report.id) do %><%= attachment_image_tag report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></td>
-						<td><%= report.created_at.strftime('%Y/%m/%d') %></td>
-						<td><%= report.fishing_date %></td>
-						<td><%= link_to fishing_report_path(report.id) do %><%= report.user.last_name %><%= report.user.first_name %><% end %></td>
-						<td><%= link_to fishing_report_path(report.id) do %><%= report.user.nickname %><% end %></td>
-						<td><%= link_to fishing_spot_path(report.id) do %><%= report.fishing_spot.fishing_spot_name %><% end %></td>
-						<td><%= report.size %>cm</td>
-						<td><%= link_to "編集", edit_fishing_report_path(report.id) %></td>
-						<td><%= link_to "削除", fishing_report_path(report.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-					</tr>
-				<% end %>
-				</tbody>
-			</table>
+			<div class="report_index_scroll">
+				<table  class="table">
+					<caption>釣果報告一覧</caption>
+					<thead>
+						<tr>
+							<th></th>
+							<th>投稿日</th>
+							<th>釣行日</th>
+							<th>ユーザー名</th>
+							<th>ニックネーム</th>
+							<th>ポイント名</th>
+							<th>通報受数</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					<% @f_reports.each do |report| %>
+						<tr>
+							<td><%= link_to fishing_report_path(report.id) do %><%= attachment_image_tag report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></td>
+							<td><%= report.created_at.strftime('%Y/%m/%d') %></td>
+							<td><%= report.fishing_date %></td>
+							<td><%= link_to fishing_report_path(report.id) do %><%= report.user.last_name %><%= report.user.first_name %><% end %></td>
+							<td><%= link_to fishing_report_path(report.id) do %><%= report.user.nickname %><% end %></td>
+							<td><%= link_to fishing_spot_path(report.id) do %><%= report.fishing_spot.fishing_spot_name %><% end %></td>
+							<td><%= report.complaints.count %>件</td>
+							<td><%= link_to "編集", edit_fishing_report_path(report.id) %></td>
+							<td><%= link_to "削除", fishing_report_path(report.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="col-md-5">
-			<table  class="table">
-				<caption>Tackle紹介一覧</caption>
-				<thead>
-					<tr>
-						<th></th>
-						<th>投稿日</th>
-						<th>ユーザー名</th>
-						<th>ニックネーム</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @tackles.each do |tackle| %>
-					<tr>
-						<th><%= attachment_image_tag tackle, :tackle_image, :fill, 50, 50, format: 'jpeg' %></th>
-						<th><%= tackle.created_at.strftime('%Y/%m/%d') %></th>
-						<td><%= link_to user_path(tackle.id) do %><%= tackle.user.last_name %><%= tackle.user.first_name %><% end %></td>
-						<th><%= tackle.user.nickname %></th>
-						<td><%= link_to "編集", edit_tackle_report_path(tackle.id) %></td>
-						<td><%= link_to "削除", tackle_report_path(tackle.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+			<div class="report_index_scroll">
+				<table  class="table">
+					<caption>Tackle紹介一覧</caption>
+					<thead>
+						<tr>
+							<th></th>
+							<th>投稿日</th>
+							<th>ユーザー名</th>
+							<th>ニックネーム</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @tackles.each do |tackle| %>
+						<tr>
+							<td><%= attachment_image_tag tackle, :tackle_image, :fill, 50, 50, format: 'jpeg' %></td>
+							<td><%= tackle.created_at.strftime('%Y/%m/%d') %></td>
+							<td><%= link_to user_path(tackle.id) do %><%= tackle.user.last_name %><%= tackle.user.first_name %><% end %></td>
+							<td><%= tackle.user.nickname %></td>
+							<td><%= link_to "編集", edit_tackle_report_path(tackle.id) %></td>
+							<td><%= link_to "削除", tackle_report_path(tackle.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

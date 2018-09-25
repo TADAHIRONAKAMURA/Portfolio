@@ -21,8 +21,12 @@ class FishingReportsController < ApplicationController
 		@f_report = FishingReport.new(fishing_report_params)
 		@f_report.user_id = current_user.id
 		if @f_report.save
-			redirect_to mypage_path
-			flash[:notice]="釣果報告が完了しました！"
+			if admin_signed_in?
+				redirect_to fishing_reports_path
+			elsif user_signed_in?
+				redirect_to mypage_path
+				flash[:notice]="釣果報告が完了しました！"
+			end
 		else
 			render :new
 		end
@@ -51,13 +55,23 @@ class FishingReportsController < ApplicationController
 	def update
 		@f_report = FishingReport.find(params[:id])
 		@f_report.update(fishing_report_params)
-		redirect_to fishing_reports_path
+		if admin_signed_in?
+			redirect_to fishing_reports_path
+		elsif user_signed_in?
+			redirect_to mypage_path
+			flash[:notice]="釣果報告の編集が完了しました！"
+		end
 	end
 
 	def destroy
 		@f_report = FishingReport.find(params[:id])
 		@f_report.destroy
-		redirect_to fishing_reports_path
+		if admin_signed_in?
+			redirect_to fishing_reports_path
+		elsif user_signed_in?
+			redirect_to mypage_path
+			flash[:notice]="釣果報告の削除が完了しました！"
+		end
 	end
 
 	private

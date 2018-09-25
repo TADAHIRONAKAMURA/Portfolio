@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 	get '/mypage' => 'users#mypage'
 	get '/contract' => 'users#contract'
 	get '/user_index' => 'users#user_index'
-	get '/user_show' => 'users#user_show'
 
 	resources :fishing_spots
 	resources :tackle_reports, except: :show

@@ -25,6 +25,7 @@
 
 .report_text{
    text-align: center;
+   width: 90%;
 }
 
 .new_report{
@@ -45,3 +46,47 @@
     display: block;
     margin: 0 auto;
 }
+
+.report_show_background{
+  // background-color: #EEEEEE;
+  // height: 100vh;
+  background-image: url("reportshow.jpg");
+}
+
+.fising_report_show{
+  width: 90%;
+  margin: 0 auto;
+  // padding-bottom: 50px;
+  padding: 50px 0 50px 0;
+}
+
+.spot_subtitle{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.spot_subtitle_text{
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+div.fishing_report_show_scroll {
+  // width: 90%;
+  height: 200px;
+  padding: 5px 5px;
+  margin: 0 auto;
+  // background-color: #EEEEEE;
+  overflow: scroll;
+}
+
+.text_color{
+  color: #fff
+}
+
+.text_color a{
+  color: #fff
+}
+
+

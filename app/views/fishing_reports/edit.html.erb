@@ -1,45 +1,63 @@
-<h1>釣果報告編集ページ</h1>
-<%= form_for(@f_report) do |f| %>
+<div class="container">
+	<div class="new_report">
+		<% if @f_report.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<h4  class="alert_h2"><%= pluralize(@f_report.errors.count, "error") %> prohibited this artist from being saved:</h4>
+			<ul>
+				<% @f_report.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<div class="row">
+			<div class="col-xs-2 text-center">
+				<h4>釣果報告編集ページ</h4>
+				<% if flash[:notice] %><div class=notice><%= flash[:notice] %></div><% end %>
+				<% if flash[:alert] %><div class=alert><%= flash[:alert] %></div><% end %>
+			</div>
+			<div class="col-xs-5">
+					<%= form_for(@f_report) do |f| %>
+						<%= f.label :"写真" %><br>
+						写真①(必須)<%= f.attachment_field :a_image, placeholder:"ポイント写真", class:"data" %><br>
+						写真②<%= f.attachment_field :b_image, placeholder:"ポイント写真", class:"data" %><br>
+						写真③<%= f.attachment_field :c_image, placeholder:"ポイント写真", class:"data" %><br>
+						写真④<%= f.attachment_field :d_image, placeholder:"ポイント写真", class:"data" %><br>
+						写真<%= f.attachment_field :e_image, placeholder:"ポイント写真", class:"data" %><br>
+			</div>
+			<div class="col-xs-5">
+					<%= f.label :"ポイント名(必須)" %><br>
+					<%= f.select :fishing_spot_id,FishingSpot.all.collect { |p| [ p.fishing_spot_name, p.id ] }, {include_blank: true}, {class: 'data'} %><br>
+					<%= f.label :"釣行日(必須)" %><br>
+					<%= f.date_select(:fishing_date, use_month_numbers: true, class:"data") %><br>
+					<%= f.label :"時間(必須)" %><br>
+					<%= f.select :time, FishingReport.times.keys.to_a, {}, class: "data" %><br>
+					<%= f.label :"天気(必須)" %><br>
+					<%= f.select :weather, FishingReport.weathers.keys.to_a, {}, class: "data" %><br>
+					<%= f.label :"最大サイズ(必須)" %><br>
+					<%= f.number_field :size, class:"data" %>cm<br>
+					<br>
+					<%= f.label :"ルアータイプ(必須)" %><br>
+					<%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
+					<%= f.label :"レンジ(必須)" %><br>
+					<%= f.select :range, FishingReport.ranges.keys.to_a, {}, class: "data" %><br>
+					<%= f.label :"リトリーブ(必須)" %><br>
+					<%= f.select :retrieve, FishingReport.retrieves.keys.to_a, {}, class: "data" %><br>
+					<%= f.label :"ルアー名" %><br>
+					<%= f.text_field :lure_name, class:"data" %><br>
+					<%= f.label :"釣果報告(必須)" %><br>
+					<%= f.text_area :fishing_body, class:"data" %><br>
+					<p><%= f.submit '上記の内容で登録する', class:"btn btn-success active data" %></p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= f.label :"写真" %><br>
-<%= f.attachment_field :a_image, placeholder:"ポイント写真", class:"data" %><br>
-<%= f.attachment_field :b_image, placeholder:"ポイント写真", class:"data" %><br>
-<%= f.attachment_field :c_image, placeholder:"ポイント写真", class:"data" %><br>
-<%= f.attachment_field :d_image, placeholder:"ポイント写真", class:"data" %><br>
-<%= f.attachment_field :e_image, placeholder:"ポイント写真", class:"data" %><br>
-<!-- <%#= render partial: 'photo_form', locals: { fishing_report: @f_report } %><br> -->
 
-<%= f.label :"ポイント名" %><br>
-<%= f.select :fishing_spot_id,FishingSpot.all.collect { |p| [ p.fishing_spot_name, p.id ] }, {include_blank: true}, {class: 'data'} %><br>
+	  		
 
-<%= f.label :"釣行日" %><br>
-<%#= f.date_select :fishing_date, class:"data" %><br>
-<%= f.date_select(:fishing_date, use_month_numbers: true, class:"data") %><br>
 
-<%= f.label :"時間" %><br>
-<%= f.text_field :time, class:"data" %>時<br>
 
-<%= f.label :"天気" %><br>
-<%= f.select :weather, FishingReport.weathers.keys.to_a, {}, class: "data" %><br>
 
-   <%= f.label :"最大サイズ" %><br>
-<%= f.number_field :size, class:"data" %>cm<br>
-
-   <%= f.label :"ルアータイプ" %><br>
-<%= f.select :lure_type_id, LureType.all.collect { |p| [ p.type_name, p.id ] }, {include_blank: true}, {class: "data"} %><br>
-
-   <%= f.label :"レンジ" %><br>
-<%= f.text_field :range, class:"data" %><br>
-
-   <%= f.label :"リトリーブ" %><br>
-<%= f.text_field :retrieve, class:"data" %><br>
-
-<%= f.label :"ルアー名" %><br>
-<%= f.text_field :lure_name, class:"data" %><br>
-
-<%= f.label :"釣果報告" %><br>
-<%= f.text_area :fishing_body, class:"data" %><br>
-
-<p><%= f.submit '上記の内容で変更する', class:"btn btn-success active data" %></p>
-
-<% end %>
+			

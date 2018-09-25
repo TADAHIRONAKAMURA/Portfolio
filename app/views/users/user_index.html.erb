@@ -11,8 +11,8 @@
 						<th>メールアドレス</th>
 						<th>釣果投稿</th>
 						<th>紹介</th>
-						<th>コメント</th>
-						<th>通報</th>
+						<th>コメント受数</th>
+						<th>通報受数</th>
 						<th>follow</th>
 						<th>follower</th>
 						<th></th>
@@ -22,40 +22,21 @@
 					<% @users.each do |user| %>
 					<tr>
 						<td> <%= user.id %> </td>
-						<td><%= link_to user_show_path(user.id) do %><%= user.last_name %><%= user.first_name %><% end %></td>
+						<td><%= link_to user_path(user.id) do %><%= user.last_name %><%= user.first_name %><% end %></td>
 						<td><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
 						<td><%= user.email %></td>
 						<td><%= user.fishing_reports.count %>回</td>
 						<td><%= user.tackle_reports.count %>回</td>
-						<td><%= user.report_comments.count %>回</td>
-						<td><%= user.complaints.count %>回</td>
+						<td><% comment_c = 0 %><% user.fishing_reports.each do |report| %><% comment_c += report.report_comments.count %><% end %><%= comment_c %>回</td>
+						<td><% complaint_c = 0 %><% user.fishing_reports.each do |report| %><% complaint_c += report.complaints.count %><% end %>
+							<%= complaint_c %>回</td>
 						<td><%= link_to user.followed_users.count, tmp_path(user.id, "follow"), class: "forf", remote: true %>人</td>
 						<td><%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %>人</td>
 						<td> <%= link_to "確認・編集", edit_user_path(user.id), class: 'btn btn-success' %><br><%= link_to "退会", user_path(user.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に退会させますか？" %></td>
-						
-					</tr>
+						</tr>
 					<% end %>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
-
-				<!-- <thead class="users_index_thread">
-					<tr>
-						<th class="users_index_thread_th" width="50px"> ID </th>
-						<th colspan="" class="users_index_thread_th" width="150px">ユーザー名</th>
-						<th colspan="" class="users_index_thread_th" width="150px">ニックネーム</th>
-						<th class="users_index_thread_th" width="200px">メールアドレス</th>
-						<th class="users_index_thread_th" width="200px">コメント</th>
-						<th class="users_index_thread_th" width="200px">通報</th>
-						<th colspan="" class="users_index_thread_th">follow</th>
-						<th colspan="" class="users_index_thread_th">follower</th>
-						<th colspan="2" class="users_index_thread_th"></th>
-					</tr>
-				</thead> -->
-
-
-
-
-					
