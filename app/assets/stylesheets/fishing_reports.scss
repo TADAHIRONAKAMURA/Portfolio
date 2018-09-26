@@ -89,4 +89,33 @@ div.fishing_report_show_scroll {
   color: #fff
 }
 
+.nomal{
+    // display: block;
+ }
 
+.show_image_box_response{
+  display: none;
+    // text-align: left;
+ }
+
+@media screen and (max-width:768px) {  
+  
+  .show_image_box{
+    display: none;
+  }
+
+  .show_image_box_response{
+    display: block;
+  }
+
+  .show_image_box{
+    text-align: center;
+    width: 90%;
+  }
+
+  .response_image{
+    margin: 0 auto;
+    padding: 5px 5px;
+  }
+
+}

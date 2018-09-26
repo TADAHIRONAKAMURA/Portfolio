@@ -1,7 +1,12 @@
+
+<!-- リスポンシブdiv -->
+<!-- <div class="respons"> -->
+   
+
 <div class="report_show_background">
    <div class="fising_report_show">
       <div class="row">  
-         <div class="col-md-3">
+         <div class="col-md-3 col-xs-12">
             <div class=spot_subtitle>
                <h4><%= @f_report.fishing_spot.fishing_spot_name %></h4>
                <%= attachment_image_tag @f_report.fishing_spot, :fishing_spot_image, :fill, 200, 200, format: "jpg" %><br>
@@ -10,7 +15,7 @@
                </div>
             </div>
          </div>
-         <div class="col-md-6">
+         <div class="col-md-6 col-xs-12">
             <div class="show_image_box">
                   <div class="slider-for">
                      <div><%= attachment_image_tag @f_report, :a_image, format: 'jpg' %></div>
@@ -27,8 +32,15 @@
                      <%= attachment_image_tag @f_report, :e_image, :fill, 300, 300, format: 'jpg' %>
                   </div>  
             </div>
+            <div class="show_image_box_response">
+                  <div class="response_image"><%= attachment_image_tag @f_report, :a_image, :fill, 300, 300, format: 'jpg' %></div>
+                  <div class="response_image"><%= attachment_image_tag @f_report, :b_image, :fill, 300, 300, format: 'jpg' %></div>
+                  <div class="response_image"><%= attachment_image_tag @f_report, :c_image, :fill, 300, 300, format: 'jpg' %></div>
+                  <div class="response_image"><%= attachment_image_tag @f_report, :d_image, :fill, 300, 300, format: 'jpg' %></div>
+                  <div class="response_image"><%= attachment_image_tag @f_report, :e_image, :fill, 300, 300, format: 'jpg' %></div> 
+            </div>
          </div>
-         <div class="col-md-3 text_color">
+         <div class="col-md-3 col-xs-12 text_color">
             <h5><%= link_to user_path(@f_report.user.id) do %><%= attachment_image_tag @f_report, :a_image, :fill, 50, 50, format: 'jpg' %><%= @f_report.user.nickname %><% end %>さんからの投稿</h5>
             <% unless admin_signed_in? %>
                <% if @f_report.favorited_by?(current_user) %>
@@ -56,11 +68,11 @@
          </div>
       </div>
       <div class="row">
-         <div class="col-md-3 text_color">
+         <div class="col-md-3 col-xs-12 text_color">
             <table>
                <%= form_for [@f_report, @complaint] do |f| %>
                <tr>
-                  <th class="col-md-9"><%= f.text_field :c_comment, rows:'5', class: "form-control",placeholder: "不適切な投稿を通報する" %></th>
+                  <th class="col-xs-9"><%= f.text_field :c_comment, rows:'5', class: "form-control",placeholder: "不適切な投稿を通報する" %></th>
                   <th><%= f.submit "通報する", class: "btn btn-sm btn-base-1 mt-20 pull-right" %></th>
                <% end %>
             </table>
@@ -78,40 +90,40 @@
                <% end %>
             <% end %>
          </div>
-         <div class="col-md-9 report_text text_color">
+         <div class="col-md-9 col-xs-12 report_text text_color">
             <% if flash[:notice] %><div class=notice><%= flash[:notice] %></div><% end %>
             <% if flash[:alert] %><div class=alert><%= flash[:alert] %></div><% end %>
             <table>
                <%= form_for [@f_report, @comment] do |f| %>
                   <tr>
-                     <th class="col-md-1"></th>
-                     <th class="col-md-6"><%= f.text_field :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %></th>
-                     <th class="col-md-1"><%= f.submit "送信する", class: "btn btn-sm" %></th>
-                     <th class="col-md-1"></th>
+                     <th class="col-xs-1"></th>
+                     <th class="col-xs-6"><%= f.text_field :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %></th>
+                     <th class="col-xs-1"><%= f.submit "送信する", class: "btn btn-sm" %></th>
+                     <th class="col-xs-1"></th>
                   </tr>
                <% end %>
             </table>
-            <div class=fishing_report_show_scroll>
-               <table class="text-left">
+            <div class="fishing_report_show_scroll table-responsive">
+               <table class="text-left table ">
                   <thead>
                      <tr>
-                        <th class="col-md-1"></th>
-                        <th class="col-md-1">[投稿者]</th>
-                        <th class="col-md-5">[コメント]</th>
-                        <th class="col-md-1"></th>
+                        <th class="col-xs-1"></th>
+                        <th class="col-xs-1">[投稿者]</th>
+                        <th class="col-xs-5">[コメント]</th>
+                        <th class="col-xs-1"></th>
                      </tr>
                   </thead>
                   <tbody class="text-left">
                      <% @f_report.report_comments.each do |r| %>
                      <tr>
-                        <td class="col-md-1"><%= r.created_at.strftime('%Y/%m/%d') %></td>
-                        <td class="col-md-1"><%= r.user.nickname %></td>
-                        <td class="col-md-5"><%= r.comment %></td>
+                        <td class="col-xs-1"><%= r.created_at.strftime('%Y/%m/%d') %></td>
+                        <td class="col-xs-1"><%= r.user.nickname %></td>
+                        <td class="col-xs-5"><%= r.comment %></td>
                         <% if admin_signed_in? %>
-                           <td class="col-md-1"><%= link_to fishing_report_report_comment_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn-danger">削除</button><br><% end %></td>
+                           <td class="col-xs-1"><%= link_to fishing_report_report_comment_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn-danger">削除</button><br><% end %></td>
                         <% elsif user_signed_in? %>
                            <% if current_user.id == r.user.id %>
-                           <td class="col-md-1"><%= link_to fishing_report_report_comment_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn-danger">削除</button><br><% end %></td>
+                           <td class="col-xs-1"><%= link_to fishing_report_report_comment_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn-danger">削除</button><br><% end %></td>
                            <% else %>
                            <% end %>
                         <% else %>
@@ -126,4 +138,3 @@
    </div>
 </div>
 
-      

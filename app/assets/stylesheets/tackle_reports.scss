@@ -4,8 +4,11 @@
 
 .main-visual {
   width: 100%;
-  height: 100%;
-  background-image: url("fuzi.jpg");
+  height: calc(100% - 80px);
+  background-image: url("tackle.jpg");
+  background-position: bottom center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .tackle_box{
@@ -24,4 +27,28 @@
 
 .tackle_new .a {
 	margin:0 auto;
+}
+
+.response{
+	display: none;
+ }
+
+  
+
+@media screen and (max-width:768px) {  
+
+	.nomal{
+		display: none;
+	}
+
+	.response{
+		display: block;
+		text-align: left;
+	}
+
+	.show_image_box{
+		text-align: center;
+		width: 90%;
+	}
+
 }

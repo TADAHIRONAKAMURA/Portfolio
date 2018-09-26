@@ -1,32 +1,48 @@
 <div class="main-visual">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12 tackle_box">
+			<div class="col-xs-12 tackle_box">
 				<h2>Tackle</h2>
-				<table  class="table">
-					<thead>
+				<table class="table">
+					<thead class="nomal">
 						<tr>
-							<th class="col-md-1">オススメ度</th>
-							<th class="col-md-1">イメージ画像</th>
-							<th class="col-md-1">メーカー</th>
-							<th class="col-md-1">ルアータイプ</th>
-							<th class="col-md-1">ルアー名</th>
-							<th class="col-md-5">紹介文</th>
-							<th class="col-md-1">紹介者</th>
+							<th class="col-xs-1">オススメ度</th>
+							<th class="col-xs-1">イメージ画像</th>
+							<th class="col-xs-1">メーカー</th>
+							<th class="col-xs-1">ルアータイプ</th>
+							<th class="col-xs-1">ルアー名</th>
+							<th class="col-xs-5">紹介文</th>
+							<th class="col-xs-1">紹介者</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% @tackles.each do |tackle| %>
-						<tr>
-							<th class="col-md-1"><%= tackle.evaluation %></th>
-							<th class="col-md-1"><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %></th>
-							<th class="col-md-1"><%= tackle.maker.maker_name %></th>
-							<th class="col-md-1"><%= tackle.lure_type.type_name %></th>
-							<th class="col-md-1"><%= tackle.tackle_name %></th>
-							<th class="col-md-5"><%= tackle.tackle_body %></th>
-							<th class="col-md-1"><%= link_to user_path(tackle.id) do %><%= tackle.user.nickname %><% end %></th>
+						<tr class="nomal">
+							<th class="col-xs-1"><%= tackle.evaluation %></th>
+							<th class="col-xs-1"><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %></th>
+							<th class="col-xs-1"><%= tackle.maker.maker_name %></th>
+							<th class="col-xs-1"><%= tackle.lure_type.type_name %></th>
+							<th class="col-xs-1"><%= tackle.tackle_name %></th>
+							<th class="col-xs-5"><%= tackle.tackle_body %></th>
+							<th class="col-xs-1"><%= link_to user_path(tackle.id) do %><%= tackle.user.nickname %><% end %></th>
 						</tr>
 						<% end %>
+						<% @tackles.each do |tackle| %>
+						<tr>
+							<div  class="response">
+							<p><br><br>______________________________</p>
+
+								<div class="col-xs-12">オススメ度:<%= tackle.evaluation %></div>
+								<div class="col-xs-12 col-md-6">イメージ画像:<%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %></div>
+								<div class="col-xs-12 col-md-6">メーカー:<%= tackle.maker.maker_name %></div>
+								<div class="col-xs-12 col-md-6">ルアータイプ:<%= tackle.lure_type.type_name %></div>
+								<div class="col-xs-12 col-md-6">ルアー名:<%= tackle.tackle_name %></div>
+								<div class="col-xs-12 col-md-6">紹介文:<%= tackle.tackle_body %></div>
+								<div class="col-xs-12 col-md-6">紹介者:<%= link_to user_path(tackle.id) do %><%= tackle.user.nickname %><% end %></div>
+							
+							</div>
+						</tr>
+						<% end %>	
 					</tbody>
 				</table>
 				<div class=pagenate_btn>

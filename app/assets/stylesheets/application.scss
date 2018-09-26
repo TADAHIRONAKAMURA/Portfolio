@@ -22,36 +22,27 @@ header {
 }
 
 .site-header{
-    // background: #fff;
-    display: flex;
-    // padding: 60px 20px;
-    position: fixed;
-    // justify-content: space-between;
-    // width: 100%;
-    z-index: 2;
+  display: flex;
+  position: fixed;
+  z-index: 2;
 }
-// .left{
-//   margin-top: 40px;
-// }
 
 .header-box{
   height: 40px;
   background: #000000;
   width: 100%;
 }
-#dropmenu {
-  list-style-type: none;
-  width: auto;
-  height: 10px;
 
- 
 .pagenation span a{
   color: white;
 }
 
-  /*border-bottom: 5px solid #535d09;*/
-  /*border-radius: 3px 3px 0 0;*/
+#dropmenu {
+  list-style-type: none;
+  width: auto;
+  height: 10px;
 }
+
 #dropmenu li {
   position: relative;
   width: 20%;
@@ -60,6 +51,7 @@ header {
   padding: 0;
   text-align: center;
 }
+
 #dropmenu li a {
   display: block;
   margin: 0;
@@ -71,6 +63,7 @@ header {
   text-decoration: none;
   width: 200px;
 }
+
 #dropmenu li ul {
   list-style: none;
   position: absolute;
@@ -81,6 +74,7 @@ header {
   border-radius: 0 0 3px 3px;
   width: 200px;
 }
+
 #dropmenu li ul li{
   overflow: hidden;
   width: 100%;
@@ -92,6 +86,7 @@ header {
   -ms-transition: .2s;
   transition: .2s;
 }
+
 #dropmenu li ul li a{
   padding: 13px 15px;
   /*透かす予定*/
@@ -100,26 +95,31 @@ header {
   font-size: 12px;
   font-weight: normal;
 }
+
 #dropmenu li:hover > a{
-  /*透かす予定*/
   background: #000000;
   color: #fff;
 }
+
 #dropmenu > li:hover > a{
   border-radius: 3px 3px 0 0;
 }
+
 #dropmenu li:hover ul li{
   overflow: visible;
   height: 38px;
   border-top: 1px solid #fff;
   /*border-bottom: 1px solid #616d0b;*/
 }
+
 #dropmenu li:hover ul li:first-child{
   border-top: 0;
 }
+
 #dropmenu li:hover ul li:last-child{
   border-bottom: 0;
 }
+
 #dropmenu li:hover ul li:last-child a{
   border-radius: 0 0 3px 3px;
 }
@@ -153,5 +153,33 @@ a {
   cursor: pointer;
 }
 
+.header-box_response{
+    display: none;
+}
 
+@media screen and (max-width:768px) {  
 
+  .header-box_nomal{
+    display: none;
+  }
+
+  .header-box_response{
+    display: block;
+  }
+
+  .show_image_box{
+    text-align: center;
+    width: 90%;
+  }
+
+  .title_response{
+    text-align: center;
+    margin: 15px;
+  }
+
+  .navbar_color{
+    text-align: center;
+    background-color: #000
+  }
+
+ }

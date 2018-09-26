@@ -24,6 +24,7 @@
 	text-align: center;
   color: #000;
   background-color: #EEEEEE;
+  background-size: cover;
 }
 
 .field {
@@ -159,6 +160,36 @@ color: #fff;
 
 .user_table a{
   color: #fff;
+}
+
+.response{
+  display: none;
+ }
+.nomal{
+    display: block;
+}
+
+.text a{
+  color: #000;
+}
+
+
+@media screen and (max-width:768px) {  
+
+  .nomal{
+    display: none;
+  }
+
+  .response{
+    display: block;
+    text-align: center;
+  }
+
+  .show_image_box{
+    text-align: center;
+    width: 90%;
+  }
+
 }
 
 

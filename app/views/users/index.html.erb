@@ -5,22 +5,33 @@
         		<div align="center"><h3> ユーザー一覧</h3></div>
 				<table class="table">
 					<thead>
-						<tr>
+						<tr class="nomal">
 							<th class="col-md-2"></th>
 							<th class="col-md-2"> ニックネーム </th>
-							<th class="col-md-5">introduction</th>
+							<th class="col-md-6">introduction</th>
 							<th class="col-md-1">釣果投稿数</th>
 							<th class="col-md-1">フォロワー数</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% @users.each do |user| %>
-						<tr>
-							<th class="col-md-2"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></th>
+						<tr class="nomal">
+							<td class="col-md-2"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></td>
 							<td class="col-md-2"><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
-							<td class="col-md-5"><%= user.introduction %></td>
+							<td class="col-md-6"><%= user.introduction %></td>
 							<td class="col-md-1"><%= user.fishing_reports.count %>回</td>
 							<td class="col-md-1"><%= link_to user.followers.count, tmp_path(user.id, "フォロワー"), class: "forf", remote: true %>人</td>
+						</tr>
+						<% end %>
+						<% @users.each do |user| %>
+						<tr>
+							<div class="response">
+								<div class="col-xs-12"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></div>
+								<div class="col-xs-12">ニックネーム<%= link_to user_path(user.id) do %><%= user.nickname %><% end %></div>
+								<div class="col-xs-12">introduction<br><%= user.introduction %></div>
+								<div class="col-xs-12">釣果投稿数<%= user.fishing_reports.count %>回</div>
+								<div class="col-xs-12">フォロワー数<%= link_to user.followers.count, tmp_path(user.id, "フォロワー"), class: "forf", remote: true %>人</div>
+							</div>
 						</tr>
 						<% end %>
 					</tbody>

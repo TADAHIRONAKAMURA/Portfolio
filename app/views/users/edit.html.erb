@@ -1,62 +1,5 @@
 <div class="row">  
-   <div class="col-md-6">
-    <div class="users_signup">
-
-      <h4><strong> 登録情報変更 </strong></h4>
-
-      <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%#= devise_error_messages! %>
-
-      <%= form_for(@user) do |f| %>
-      <div class="field">
-          <p>Image</p>
-          <%= f.attachment_field :user_image, class: "user_image", placeholder: "Image" %>
-      </div>
-
-      <div class="field">
-          <p>introduction</p>
-          <%= f.text_area :introduction, class: "introduction" %>
-      </div>
-
-      <div class="field">
-          <p>ニックネーム</p>
-          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ニックネーム" %>
-        </div>
-
-        <div class="field">
-          <p> 名前（漢字） </p>
-          <span> 姓 </span>
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "姓" %>
-          <span> 名 </span>
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "名" %>
-        </div>
-
-        <div class="field">
-          <p> 名前フリガナ（全角カナ） </p>
-          <span> セイ </span>
-          <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "セイ" %>
-          <span> メイ </span>
-          <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "メイ" %>
-        </div>
-
-        <div class="field">
-          <p> 電話番号（半角・ハイフン無し） </p>
-          <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-        </div>
-
-        <div class="field">
-          <p> メールアドレス </p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="actions">
-          <!-- <input type="submit" class="btn btn-danger" value="上記の内容で変更する" data-disable-with="上記の内容で変更する"> -->
-          <%= f.submit "上記の内容で変更する", class:"btn btn-danger" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-md-6">
+  <div class="col-md-6 col-xs-12">
     <div class="users_signup">
       <h4><strong> 登録状況 </strong></h4>
       <dl>
@@ -75,11 +18,54 @@
         <dd>メールアドレス</dd>
         <dd><p><%= @user.nickname %></p></dd>
       </dl>
+      <div><%= link_to "退会", user_path(current_user.id), class: 'btn btn-danger btn-user-show', method: :'delete', "data-confirm" => "本当に退会しますか？" %>しますか？</div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <div class="users_signup">
+      <h4><strong> 登録情報変更 </strong></h4>
+      <%= form_for(@user) do |f| %>
+      <div class="field">
+          <p>Image</p>
+          <%= f.attachment_field :user_image, class: "user_image", placeholder: "Image" %>
+      </div>
+      <div class="field">
+          <p>introduction</p>
+          <%= f.text_area :introduction, class: "introduction" %>
+      </div>
+      <div class="field">
+          <p>ニックネーム</p>
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ニックネーム" %>
+        </div>
+        <div class="field">
+          <p> 名前（漢字） </p>
+          <span> 姓 </span>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "姓" %>
+          <span> 名 </span>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "名" %>
+        </div>
+        <div class="field">
+          <p> 名前フリガナ（全角カナ） </p>
+          <span> セイ </span>
+          <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "セイ" %>
+          <span> メイ </span>
+          <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "メイ" %>
+        </div>
+        <div class="field">
+          <p> 電話番号（半角・ハイフン無し） </p>
+          <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+        </div>
+        <div class="field">
+          <p> メールアドレス </p>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "上記の内容で変更する", class:"btn btn-danger" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
 
-
-     
-
+    

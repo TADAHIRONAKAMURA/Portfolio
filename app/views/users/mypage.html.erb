@@ -5,7 +5,7 @@
 			<div class="col-md-4">
 				<div class="mypage_show">
 					<h4 class="users_names"><strong><%= @user.last_name %><%= @user.first_name %>さんのマイページ</strong></h4>
-					<div><%= link_to "基本情報の編集", edit_user_path(@user.id), class: 'btn btn-success btn-user-show' %><%= link_to "退会", user_path(current_user.id), class: 'btn btn-danger btn-user-show', method: :'delete', "data-confirm" => "本当に退会しますか？" %></div><br>
+					<br>
 					<%= attachment_image_tag @user, :user_image, :fill, 200, 200, fallback: "noimage2.png", format: "jpg", class: "user_image" %>
 					<h4>introduction</h4>
 					<div class=introduction><span><%= @user.introduction %></span></div>
@@ -23,19 +23,35 @@
 						<% @user.followed_users.each do |user| %>
 							<% if FishingReport.exists?(user_id: user) %>
 								<% f_report = FishingReport.where(user_id: user).last %>
-								<tr>
-									<td><%= f_report.created_at.strftime('%Y/%m/%d') %></td>
-									<td><%= link_to user_path(user.id) do %><%= f_report.user.nickname %><% end %></td>
+								<tr class="nomal">
+									<td class="col-md-2"><%= f_report.created_at.strftime('%Y/%m/%d') %></td>
+									<td class="col-md-2"><%= link_to user_path(user.id) do %><%= f_report.user.nickname %><% end %></td>
 									<td><%= link_to fishing_report_path(f_report.id) do %><%= attachment_image_tag f_report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></td>
-									<td><%= f_report.fishing_date %></td>
+									<td class="col-md-2"><%= f_report.fishing_date %></td>
 									<td><%= f_report.weather %></td>
-									<td><%= f_report.fishing_spot.fishing_spot_name %></td>
-									<td><%= f_report.time %></td>
+									<td class="col-md-2"><%= f_report.fishing_spot.fishing_spot_name %></td>
 									<td><%= f_report.size %>cm</td>
-									<td><%= f_report.range %></td>
 								</tr>
 							<% end %>
-						<% end %>	
+						<% end %>
+						<% @user.followed_users.each do |user| %>
+							<% if FishingReport.exists?(user_id: user) %>
+								<% f_report = FishingReport.where(user_id: user).last %>
+								<tr>
+									<div class="response">
+										<p><br><br>______________________________</p>
+
+									<div class="col-xs-12"><%= f_report.created_at.strftime('%Y/%m/%d') %></div>
+										<div class="col-xs-12"><%= link_to user_path(user.id) do %><%= f_report.user.nickname %><% end %></div>
+										<div class="col-xs-12"><%= link_to fishing_report_path(f_report.id) do %><%= attachment_image_tag f_report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></div>
+										<div class="col-xs-12"><%= f_report.fishing_date %></div>
+										<div class="col-xs-12"><%= f_report.weather %></div>
+										<div class="col-xs-12"><%= f_report.fishing_spot.fishing_spot_name %></div>
+										<div class="col-xs-12"><%= f_report.size %>cm</div>
+									</div>
+								</tr>
+							<% end %>
+						<% end %>
 					</table>
 				</div>
 			</div>
@@ -43,36 +59,55 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div align="center"><h4>釣果投稿一覧</h4></div>
-				<div class=mypage_scroll>				
+				<div class="mypage_scroll" >				
 					<table  class="table">
 						<thead>
-							<tr>
-								<th>投稿を読む</th>
-								<th>投稿日</th>
-								<th></th>
-								<th>釣行日</th>
-								<th>天気</th>
-								<th>ポイント名</th>
-								<th>時間</th>
-								<th>MAX</th>
-								<th>レンジ</th>
+							<tr class="nomal">
+								<th class="col-md-1">投稿を読む</th>
+								<th class="col-md-1">投稿日</th>
+								<th class="col-md-1"></th>
+								<th class="col-md-1">釣行日</th>
+								<th class="col-md-1">天気</th>
+								<th class="col-md-2">ポイント名</th>
+								<th class="col-md-1">時間</th>
+								<th class="col-md-1">MAX</th>
+								<th class="col-md-1">レンジ</th>
+								<th class="col-md-1"></th>
 								<th class="col-md-1"></th>
 							</tr>
 						</thead>
 						<tbody>
 						<% @user.fishing_reports.each do |report| %>
-							<tr>
-								<td><%= link_to fishing_report_path(report.id) do %>投稿を読む<% end %></td>
-								<td><%= report.created_at.strftime('%Y/%m/%d') %></td>
-								<td><%= link_to fishing_report_path(report.id) do %><%= attachment_image_tag report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></td>
-								<td><%= report.fishing_date %></td>
-								<td><%= report.weather %></td>
-								<td><%= report.fishing_spot.fishing_spot_name %></td>
-								<td><%= report.time %></td>
-								<td><%= report.size %></td>
-								<td><%= report.range %></td>
-								<td class="col-md-1"><%= link_to "編集", edit_fishing_report_path(report.id), class: 'btn btn-success btn-user-show' %><br>
+							<tr class="nomal text">
+								<td class="col-md-1"><%= link_to fishing_report_path(report.id) do %>投稿を読む<% end %></td>
+								<td class="col-md-1"><%= report.created_at.strftime('%Y/%m/%d') %></td>
+								<td class="col-md-1"><%= link_to fishing_report_path(report.id) do %><%= attachment_image_tag report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></td>
+								<td class="col-md-1"><%= report.fishing_date %></td>
+								<td class="col-md-1"><%= report.weather %></td>
+								<td class="col-md-2"><%= report.fishing_spot.fishing_spot_name %></td>
+								<td class="col-md-1"><%= report.time %></td>
+								<td class="col-md-1"><%= report.size %>cm</td>
+								<td class="col-md-1"><%= report.range %></td>
+								<td class="col-md-1"><%= link_to "編集", edit_fishing_report_path(report.id), class: 'btn btn-success btn-user-show' %>
+								<td class="col-md-1">
 									<%= link_to "削除", fishing_report_path(report.id), class: 'btn btn-danger btn-user-show', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+							</tr>
+						<% end %>
+						<% @user.fishing_reports.each do |report| %>
+							<tr>
+								<div class="response">
+									<div class="col-xs-12"><%= link_to fishing_report_path(report.id) do %>投稿を読む<% end %></div>
+									<div class="col-xs-12">投稿日<%= report.created_at.strftime('%Y/%m/%d') %></div>
+									<div class="col-xs-12"><%= link_to fishing_report_path(report.id) do %><%= attachment_image_tag report, :a_image, :fill, 50, 50, format: 'jpeg' %><% end %></div>
+									<div class="col-xs-12">釣行日<%= report.fishing_date %></div>
+									<div class="col-xs-12">天気<%= report.weather %></div>
+									<div class="col-xs-12">ポイント名<%= report.fishing_spot.fishing_spot_name %></div>
+									<div class="col-xs-12">時間<%= report.time %></div>
+									<div class="col-xs-12">MAX<%= report.size %>cm</div>
+									<div class="col-xs-12">レンジ<%= report.range %></div>
+									<div class="col-xs-12"><%= link_to "編集", edit_fishing_report_path(report.id), class: 'btn btn-success btn-user-show' %>
+										<%= link_to "削除", fishing_report_path(report.id), class: 'btn btn-danger btn-user-show', method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+								</div>
 							</tr>
 						<% end %>
 						</tbody>
@@ -86,7 +121,7 @@
 				<div class=mypage_scroll>
 					<table  class="table">
 						<thead>
-							<tr>
+							<tr class="nomal">
 								<th class="col-md-1">投稿日</th>
 								<th>オススメ度</th>
 								<th class="col-md-1">イメージ画像</th>
@@ -99,15 +134,29 @@
 						</thead>
 						<tbody>
 							<% @user.tackle_reports.each do |tackle| %>
-							<tr>
-								<th class="col-md-1"><%= tackle.created_at.strftime('%Y/%m/%d') %></th>
-								<th><%= tackle.evaluation %></th>
-								<th class="col-md-1"><%= link_to tackle_reports_path do %><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %><% end %></th>
-								<th class="col-md-1"><%= tackle.maker.maker_name %></th>
-								<th class="col-md-1"><%= tackle.lure_type.type_name %></th>
-								<th class="col-md-1"><%= tackle.tackle_name %></th>
-								<th class="col-md-5"><%= tackle.tackle_body %></th>
+							<tr class="nomal">
+								<td class="col-md-1"><%= tackle.created_at.strftime('%Y/%m/%d') %></td>
+								<td><%= tackle.evaluation %></td>
+								<td class="col-md-1"><%= link_to tackle_reports_path do %><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %><% end %></td>
+								<td class="col-md-1"><%= tackle.maker.maker_name %></td>
+								<td class="col-md-1"><%= tackle.lure_type.type_name %></td>
+								<td class="col-md-1"><%= tackle.tackle_name %></td>
+								<td class="col-md-5"><%= tackle.tackle_body %></td>
 								<td class="col-md-1"><%= link_to "編集", edit_tackle_report_path(tackle.id), class: 'btn btn-success' %><br><%= link_to "削除", tackle_report_path(tackle.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+							</tr>
+							<% end %>
+							<% @user.tackle_reports.each do |tackle| %>
+							<tr>
+								<div class="response">
+									<div class="col-xs-12">投稿日:<%= tackle.created_at.strftime('%Y/%m/%d') %></div>
+									<div class="col-xs-12"><%= tackle.evaluation %></div>
+									<div class="col-xs-12"><%= link_to tackle_reports_path do %><%= attachment_image_tag tackle, :tackle_image, :fill, 100, 100, format: "jpg" %><% end %></div>
+									<div class="col-xs-12">メーカー:<%= tackle.maker.maker_name %></div>
+									<div class="col-xs-12">ルアータイプ:<%= tackle.lure_type.type_name %></div>
+									<div class="col-xs-12">ルアー名:<%= tackle.tackle_name %></div>
+									<div class="col-xs-12">紹介文<%= tackle.tackle_body %></div>
+									<div class="col-xs-12"><%= link_to "編集", edit_tackle_report_path(tackle.id), class: 'btn btn-success' %><%= link_to "削除", tackle_report_path(tackle.id), class: 'btn btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+								</div>
 							</tr>
 							<% end %>
 						</tbody>

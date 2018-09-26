@@ -11,12 +11,12 @@
 		</div>
 		<% end %>
 		<div class="row">
-			<div class="col-xs-2 text-center">
+			<div class="col-md-2 col-xs-12 text-center">
 				<h4>釣果報告編集ページ</h4>
 				<% if flash[:notice] %><div class=notice><%= flash[:notice] %></div><% end %>
 				<% if flash[:alert] %><div class=alert><%= flash[:alert] %></div><% end %>
 			</div>
-			<div class="col-xs-5">
+			<div class="col-md-5 col-xs-12">
 					<%= form_for(@f_report) do |f| %>
 						<%= f.label :"写真" %><br>
 						写真①(必須)<%= f.attachment_field :a_image, placeholder:"ポイント写真", class:"data" %><br>
@@ -25,7 +25,7 @@
 						写真④<%= f.attachment_field :d_image, placeholder:"ポイント写真", class:"data" %><br>
 						写真<%= f.attachment_field :e_image, placeholder:"ポイント写真", class:"data" %><br>
 			</div>
-			<div class="col-xs-5">
+			<div class="col-md-5 col-xs-12">
 					<%= f.label :"ポイント名(必須)" %><br>
 					<%= f.select :fishing_spot_id,FishingSpot.all.collect { |p| [ p.fishing_spot_name, p.id ] }, {include_blank: true}, {class: 'data'} %><br>
 					<%= f.label :"釣行日(必須)" %><br>
