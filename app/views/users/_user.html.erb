@@ -4,7 +4,6 @@
 	<td><%= link_to "フォロー中", follow_path(user.id), remote: true, class: "follow now", data: {"id" => user.id} %></td>
 <% else %>
 	<td><%= link_to "フォローする", follow_path(user.id), remote: true, class: "follow yet", data: {"id" => user.id} %></td>
-	<!-- カスタムデータ属性 -->
 <% end %>
 <td></td>
 <td></td>

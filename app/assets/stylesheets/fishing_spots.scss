@@ -49,6 +49,8 @@
 
 .spot_number_box{
   text-align: left;
+  height: 100%;
+  margin: 50px auto;
 }
 
 .pagenate_btn{
@@ -77,7 +79,11 @@
   text-align: center;
 }
 
-.spot_number a{
+.spot_text{
+  color: #fff
+}
+
+.spot_text a{
   color: #fff
 }
 
@@ -144,7 +150,13 @@ text-shadow:1px 1px 3px #ccc,
     display: none;
   }
 
+
 @media screen and (max-width:768px) {  
+
+  .spot_number_box{
+    width: 50%;
+    margin: 50px auto;
+  }
 
   .nomal{
     display: none;
@@ -155,18 +167,9 @@ text-shadow:1px 1px 3px #ccc,
     text-align: left;
   }
 
-  .col-xs-12 a{
-    color: #fff;
-  }
-
-  .text{
-    color: #fff;
-  }
-
-  // .show_image_box{
-  //   text-align: center;
-  //   width: 90%;
-  // }
+.text a{
+  color: #fff!important;
+}
 
 }
 

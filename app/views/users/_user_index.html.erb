@@ -1,5 +1,4 @@
 <th>フォロワー数<%= link_to user.followers.count, tmp_path(user.id, "follower"), class: "forf", remote: true %>人</th>
-
 <td><%= user.id %></td>
 <td><%= user.nickname %></td>
 <td><%= link_to user.followed_users.count, tmp_path(user.id, "follow"), class: "forf", remote: true %></td>

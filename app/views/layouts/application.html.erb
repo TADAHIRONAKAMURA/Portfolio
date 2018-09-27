@@ -33,15 +33,17 @@
                </ul>
             </li>
          <% elsif admin_signed_in? %>
+            <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
+            <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
             <li><a href="#">FISHING</a>
                <ul>
                   <% mapspot.reverse_each do |spot| %><li><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></li><% end %>
                </ul>
             </li>
+            <li class="li"><%= link_to "ユーザー一覧", users_path %></li>
             <li><a href="#">ADMIN</a>
                <ul>
-                  <li class="li"><%= link_to "TOP", fishing_spots_path %></li>
-                  <li class="li"><%= link_to "TACKLE", tackle_reports_path %></li>
+                  <li class="li"><%= link_to "釣果報告投稿ページ", new_fishing_report_path %></li>
                   <li class="li"><%= link_to "top管理ページ", new_fishing_spot_path %></li>
                   <li class="li"><%= link_to "ユーザー一覧(管理者用)", user_index_path %></li>
                   <li class="li"><%= link_to "投稿一覧(管理者用)", fishing_reports_path %></li>
@@ -59,43 +61,45 @@
    </nav>
    <nav class="header-box header-box_response">
       <nav class="navbar navbar-default navbar_color">
-      <div class="container-fluid">
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-               <span class="sr-only">Toggle navigation</span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-            </button>
-            <h3 class=title_response></h3>
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button>
+               <h3 class=title_response></h3>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarEexample1">
+               <ul class="nav navbar-nav">
+                  <% if user_signed_in? %>
+                     <li class="active"><%= link_to "TOP", fishing_spots_path %></li>
+                     <li><%= link_to "POLICY", contract_path %></li>
+                     <li class="active"><%= link_to "TACKLE", tackle_reports_path %></li>
+                     <li><%= link_to "USER", users_path %></li>
+                     <li class="active"><%= link_to "MY PAGE", mypage_path %></li>
+                     <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+                  <% elsif admin_signed_in? %>
+                     <li class="active"><%= link_to "TOP", fishing_spots_path %></li>
+                     <li><%= link_to "POLICY", contract_path %></li>
+                     <li class="active"><%= link_to "TACKLE", tackle_reports_path %></li>
+                     <li><%= link_to "USER", users_path %></li>
+                     <li class="active"><%= link_to "top管理ページ", new_fishing_spot_path %></li>
+                     <li><%= link_to "ユーザー一覧(管理者用)", user_index_path %></li>
+                     <li class="active"><%= link_to "投稿一覧(管理者用)", fishing_reports_path %></li>
+                     <li><%= link_to "LOG OUT", destroy_admin_session_path, method: :delete %></li>
+                  <% else %>
+                     <li class="active"><%= link_to "TOP", fishing_spots_path %></li>
+                     <li><%= link_to "POLICY", contract_path %></li>
+                     <li class="active"><%= link_to "TACKLE", tackle_reports_path %></li>
+                     <li><%= link_to "LOG IN", new_user_session_path %></li>
+                     <li class="active"><%= link_to "SIGN UP", new_user_registration_path %></li>
+                  <% end %>
+               </ul>
+            </div>
          </div>
-         <div class="collapse navbar-collapse" id="navbarEexample1">
-            <ul class="nav navbar-nav">
-               <% if user_signed_in? %>
-                  <li class="active"><%= link_to "TOP", fishing_spots_path %></li>
-                  <li><%= link_to "POLICY", contract_path %></li>
-                  <li class="active"><%= link_to "TACKLE", tackle_reports_path %></li>
-                  <li><%= link_to "USER", users_path %></li>
-                  <li class="active"><%= link_to "MY PAGE", mypage_path %></li>
-                  <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
-                  
-               <% elsif admin_signed_in? %>
-                  <li class="active"><%= link_to "TOP", fishing_spots_path %></li>
-                  <li><%= link_to "POLICY", contract_path %></li>
-                  <li class="active"><%= link_to "TACKLE", tackle_reports_path %></li>
-                  <li><%= link_to "USER", users_path %></li>
-                  <li class="active"><%= link_to "MY PAGE", mypage_path %></li>
-                  <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
-               <% else %>
-                  <li class="active"><%= link_to "TOP", fishing_spots_path %></li>
-                  <li><%= link_to "POLICY", contract_path %></li>
-                  <li class="active"><%= link_to "TACKLE", tackle_reports_path %></li>
-                  <li><%= link_to "LOG IN", new_user_session_path %></li>
-                  <li class="active"><%= link_to "SIGN UP", new_user_registration_path %></li>
-               <% end %>
-            </ul>
-         </div>
-      </div>
+      </nav>
    </nav>
 </header>
 <br>
