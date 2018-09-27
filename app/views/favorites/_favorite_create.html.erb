@@ -1,0 +1,3 @@
+<%= link_to fishing_report_favorites_path(@f_report), method: :post, id: "favorites", remote: true do %>
+<span class="glyphicon glyphicon-thumbs-up black" aria-hidden="true"><%= @f_report.favorites.count %></span>いいね
+<% end %>

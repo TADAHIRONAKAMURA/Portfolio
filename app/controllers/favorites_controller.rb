@@ -3,13 +3,23 @@ class FavoritesController < ApplicationController
 		@f_report = FishingReport.find(params[:fishing_report_id])
         favorite = current_user.favorites.new(fishing_report_id: @f_report.id)
         favorite.save
-        redirect_to fishing_report_path(@f_report)
+
+        favorite.reload
+        respond_to do |format|
+            format.html { render @f_report }
+            format.js
+        end
     end
+
     def destroy
     	@f_report = FishingReport.find(params[:fishing_report_id])
     	favorite = current_user.favorites.find_by(fishing_report_id: @f_report.id)
-        # favorite
     	favorite.destroy
-    	redirect_to fishing_report_path(@f_report)
+
+        @f_report.reload
+        respond_to do |format|
+            format.html { render @f_report }
+            format.js
+        end
     end
 end

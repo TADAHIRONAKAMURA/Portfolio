@@ -92,16 +92,6 @@ $(function() {
       $('.modal-main').fadeOut();
     })
 
-
-
-	
-
-
-
-
-
-
-
 });
 
 
