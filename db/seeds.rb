@@ -37,5 +37,35 @@ maker_name.each do |mk|
   Maker.find_or_create_by(maker_name: mk)
 end
 
-# rails db seed済み
-# Admin.create!(email: "admin@email.com", password: "adminpassword")
+# 別の書き方
+# lure_types = %w(
+# 	トップウォーター
+# 	バズベイト
+# 	ミノー
+# 	シャッド
+# 	クランクベイト
+# 	バイブレーション
+# 	スピナーベイト
+# 	ビックベイト
+# 	メタル系
+# 	ラバージグ・スモラバ
+# 	ソフトルアー
+# )
+# lure_types.each do |lure_type|
+#   LureType.find_or_create_by(type_name: lure_type)
+# end
+
+# makers = %w(
+# 	ダイワ
+# 	シマノ
+# 	ゲーリーヤマモト
+# 	O.S.P
+# 	ジャッカル
+# 	エバーグリーン
+# 	ノリーズ
+# 	ケイテック
+# )
+# makers.each do |maker|
+#   Maker.find_or_create_by(maker_name: maker)
+# end
+

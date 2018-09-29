@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# rails db seed済み
+# Admin.create!(email: "admin@email.com", password: "adminpassword")

@@ -6,7 +6,7 @@
 				<div class="mypage_show">
 					<h4 class="users_names"><strong><%= @user.last_name %><%= @user.first_name %>さんのマイページ</strong></h4>
 					<br>
-					<%= attachment_image_tag @user, :user_image, :fill, 200, 200, fallback: "noimage2.png", format: "jpg", class: "user_image" %>
+					<%= attachment_image_tag @user, :user_image, :fill, 200, 200, fallback: "/images/noimage2.png", format: "jpg", class: "user_image" %>
 					<h4>introduction</h4>
 					<div class=introduction><span><%= @user.introduction %></span></div>
 					<div class="table_right"></div>

@@ -16,7 +16,7 @@
 					<tbody>
 						<% @users.each do |user| %>
 						<tr class="nomal">
-							<td class="col-md-2"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></td>
+							<td class="col-md-2"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "/images/no_image100x100.jpg", format: "jpg", class: "user_image" %></td>
 							<td class="col-md-2"><%= link_to user_path(user.id) do %><%= user.nickname %><% end %></td>
 							<td class="col-md-6"><%= user.introduction %></td>
 							<td class="col-md-1"><%= user.fishing_reports.count %>回</td>
@@ -26,7 +26,7 @@
 						<% @users.each do |user| %>
 						<tr>
 							<div class="response">
-								<div class="col-xs-12"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "no_image100x100.jpg", format: "jpg", class: "user_image" %></div>
+								<div class="col-xs-12"><%= attachment_image_tag user, :user_image, :fill, 100, 100, fallback: "/images/no_image100x100.jpg", format: "jpg", class: "user_image" %></div>
 								<div class="col-xs-12">ニックネーム<%= link_to user_path(user.id) do %><%= user.nickname %><% end %></div>
 								<div class="col-xs-12">introduction<br><%= user.introduction %></div>
 								<div class="col-xs-12">釣果投稿数<%= user.fishing_reports.count %>回</div>

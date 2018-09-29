@@ -10,7 +10,7 @@
 				</div>
 				<div class="col-md-8 col-xs-12">
 					<div class="map">
-						<div><img class="map-image" src="assets/kawaguchi.jpg"></div>
+						<div><img class="map-image" src="/images/kawaguchi.jpg"></div>
 					</div>
 				</div>
 				<div class="col-md-2 col-xs-12">
@@ -34,7 +34,7 @@
 						<table class= "table spot_text">
 							<% @spots.each do |spot| %>
 								<tr class="nomal">
-									<td><%= link_to fishing_spot_path(spot.id) do %><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "no_image100x100.jpg" %><% end %></td>
+									<td><%= link_to fishing_spot_path(spot.id) do %><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "/images/no_image100x100.jpg" %><% end %></td>
 									<td class="col-xs-2"><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></td>
 									<td class="col-xs-8"><%= spot.fishing_spot_body %></td>
 								</tr>
@@ -44,7 +44,7 @@
 									<div  class="response spot_text">
 										<p><br><br>______________________________</p>
 
-										<div class="col-xs-12 tttt"><%= link_to fishing_spot_path(spot.id) do %><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "no_image100x100.jpg" %><% end %>
+										<div class="col-xs-12 tttt"><%= link_to fishing_spot_path(spot.id) do %><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "/images/no_image100x100.jpg" %><% end %>
 										</div>
 										<div class="col-xs-12 text"><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></div>
 										<div class="col-xs-12 text"><%= spot.fishing_spot_body %></div>

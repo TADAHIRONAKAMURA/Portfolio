@@ -64,6 +64,7 @@ $(function() {
 	})
 
 	$(document).ready(function(){
+	// $(document).one('turbolinks:load', function(){
 	$('.slider-for').slick({
 		slidesToShow: 1,
 	    slidesToScroll: 1,

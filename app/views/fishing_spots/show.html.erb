@@ -3,7 +3,7 @@
 		<div class="col-md-3">
 			<div class=spot_subtitle>
 				<h4><%= @spot.fishing_spot_name %></h4>
-				<%= attachment_image_tag @spot, :fishing_spot_image, :fill, 200, 200, format: "jpg", fallback: "no_image100x100.jpg" %><br>
+				<%= attachment_image_tag @spot, :fishing_spot_image, :fill, 200, 200, format: "jpg", fallback: "/images/no_image100x100.jpg" %><br>
 				<div class=spot_subtitle_text>
 					<h4><%= @spot.fishing_spot_body %></h4>
 				</div>

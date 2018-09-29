@@ -32,7 +32,7 @@
 				<tbody>
 				<% @spots.each do |spot| %>
 					<tr>
-						<td><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "no_image100x100.jpg" %></td>
+						<td><%= attachment_image_tag spot, :fishing_spot_image, :fill, 100, 100, format: "jpg" , fallback: "/images/no_image100x100.jpg" %></td>
 						<td>[<%= spot.spot_number %>]</td>
 						<td class="col-md-2"><%= spot.fishing_spot_name %></td>
 						<td class="col-md-7"><span><%= spot.fishing_spot_body %></span></td>

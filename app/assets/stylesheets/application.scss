@@ -16,6 +16,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";   
 
+*{
+ min-height:0;
+ min-width:0;
+ }
+
 
 header {
   width: 100%;
