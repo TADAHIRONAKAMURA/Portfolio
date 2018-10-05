@@ -4,7 +4,6 @@
 
 .main-visual {
   width: 100%;
-  height: 1100px;
   background-image: image-url("fuzi.jpg");
 }
 
@@ -48,6 +47,9 @@
 
 .report_show_background{
   background-image: image-url("reportshow.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
 }
 
 .fising_report_show{
@@ -73,6 +75,8 @@ div.fishing_report_show_scroll {
   padding: 5px 5px;
   margin: 0 auto;
   overflow: scroll;
+  // background-color: #EEEEEE;
+
 }
 
 .text_color{

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def mapspot
-		@map_spots = FishingSpot.all
+		@map_spots = FishingSpot.all.order(spot_number: :DESC)
 	end
 	
 	protected

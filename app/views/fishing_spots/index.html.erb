@@ -3,7 +3,6 @@
   		<div class=notice><%= flash[:notice] %></div>
 	<% end %>
 	<div class=title_box><div class="title_text"><h1><span class="maintitle">BASSCOCO</span></h1></div></div>
-	<div class="map_bg">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-2 col-xs-12">
@@ -26,7 +25,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 		<div class="container-fluid">
 			<div class="description">
 				<div class='row'>
@@ -48,12 +46,10 @@
 										</div>
 										<div class="col-xs-12 text"><%= link_to fishing_spot_path(spot.id) do %><%= spot.fishing_spot_name %><% end %></div>
 										<div class="col-xs-12 text"><%= spot.fishing_spot_body %></div>
+									</div>
 								</tr>
 							<% end %>
 						</table>
-						<div class=pagenate_btn>
-							<%= paginate @spots, class: "pagenate" %>
-						</div>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 <div class="show_background">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 col-xs-12 index_box_height">
 			<div class=spot_subtitle>
 				<h4><%= @spot.fishing_spot_name %></h4>
 				<%= attachment_image_tag @spot, :fishing_spot_image, :fill, 200, 200, format: "jpg", fallback: "/images/no_image100x100.jpg" %><br>
@@ -9,10 +9,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-9 col-xs-12">
 			<h4 class="show_contents">釣果報告一覧</h4>
 			<div class="show_scroll">
-				<table  class="table">
+				<table  class="table spot_text">
 					<tbody>
 					<% @f_reports.each do |f_report| %>
 						<tr>

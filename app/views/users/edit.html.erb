@@ -1,22 +1,24 @@
 <div class="row">  
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-6 col-xs-12 index_box_height">
     <div class="users_signup">
       <h4><strong> 登録状況 </strong></h4>
       <dl>
         <dt>Image</dt>
         <dd><%= attachment_image_tag @user, :user_image, :fill, 50, 50, format: 'jpg' %></dd>
-        <dd>introduction</dd>
-        <dd><p><%= @user.nickname %></p></dd>
+        <dd>introduction</dd>        
+        <dd>
+          <div class="introduction_text"><p><%= @user.introduction %></p></div><br>
+        </dd>        
         <dd>ニックネーム</dd>
         <dd><p><%= @user.nickname %></p></dd>
         <dd> 名前（漢字） </dd>
-        <dd><p><%= @user.nickname %></p></dd>
+        <dd><p><%= @user.last_name %><%= @user.first_name %></p></dd>
         <dd> 名前フリガナ（全角カナ）</dd>
-        <dd><p><%= @user.nickname %></p></dd>
+        <dd><p><%= @user.last_name_kana %><%= @user.first_name_kana %></p></dd>
         <dd>電話番号（半角・ハイフン無し）</dd>
-        <dd><p><%= @user.nickname %></p></dd>
+        <dd><p><%= @user.phone_number %></p></dd>
         <dd>メールアドレス</dd>
-        <dd><p><%= @user.nickname %></p></dd>
+        <dd><p><%= @user.email %></p></dd>
       </dl>
       <div><%= link_to "退会", user_path(current_user.id), class: 'btn btn-danger btn-user-show', method: :'delete', "data-confirm" => "本当に退会しますか？" %>しますか？</div>
     </div>
@@ -28,12 +30,12 @@
       <div class="field">
           <p>Image</p>
           <%= f.attachment_field :user_image, class: "user_image", placeholder: "Image" %>
-      </div>
-      <div class="field">
+        </div>
+        <div class="field col-xs-12">
           <p>introduction</p>
-          <%= f.text_area :introduction, class: "introduction" %>
-      </div>
-      <div class="field">
+          <%= f.text_area :introduction, class: "col-xs-12" %>
+        </div>
+        <div class="field">
           <p>ニックネーム</p>
           <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ニックネーム" %>
         </div>

@@ -77,7 +77,7 @@
                <%= r.created_at.strftime('%Y/%m/%d') %><br>
                  [コメント]<br>
                <%= r.c_comment %><br>
-               <%= link_to fishing_report_complaint_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn ">削除</button><br><% end %>
+               <%= link_to fishing_report_complaint_path(r.fishing_report_id, r.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %><button class="btn-danger">削除</button><br><% end %>
                <% end %>
             <% end %>
          </div>

@@ -8,6 +8,5 @@ class FishingSpot < ApplicationRecord
 	validates :fishing_spot_name, presence: true
 	validates :fishing_spot_body, length: { maximum:500 }
 
-	default_scope -> { order(spot_number: :DESC) }
 
 end

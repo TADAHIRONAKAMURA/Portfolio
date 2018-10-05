@@ -109,10 +109,20 @@
   padding: 5px 5px;
 }
 
-.introduction{
+.introduction_text {
   width: 80%;
   text-align: left;
+  padding: 0.5em 1em;
   margin: 0 auto;
+  /*font-weight: bold;*/
+  color: #000000;
+  background: #FFF;
+  border: solid 3px #000000;
+  border-radius: 10px;
+}
+.introduction_text p {
+  margin: 0; 
+  padding: 0;
 }
 
 div.show_scroll {
@@ -120,7 +130,6 @@ div.show_scroll {
   height: 90%;
   padding: 5px 5px;
   margin: 0 auto;
-  background-color: #fff;
   overflow: scroll;
 }
 
@@ -150,10 +159,10 @@ color: #fff;
 
 .user_index_background{
   width: 100%;
-  height: cover;
   background-image: image-url("img_4964.jpg");
   background-position: bottom center;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .user_table a{
@@ -184,6 +193,23 @@ color: #fff;
     text-align: center;
     width: 90%;
   }
+
+  .modal-main {
+  display: none;
+  max-width: 1000px;
+  max-height: none;
+  font-size: 11px;
+  top: 50px;
+  left: 0;
+  bottom: auto;
+  right: 0;
+  margin: 0 auto;
+  color: #666666;
+  z-index: 200;
+  background-color: #EEEEEE;
+  position: absolute;
+  border-radius: 30px 30px 30px 30px;
+}
 
 }
 
